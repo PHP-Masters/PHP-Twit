@@ -83,6 +83,8 @@
 					</form>
                 </div>
 
+				
+
                 <div class="card">
                     <h3 class="card-header bg-info text-xs-center">Register</h3>
                     <div class="card-block">
