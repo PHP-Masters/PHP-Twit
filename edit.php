@@ -94,12 +94,22 @@
 	?>
 
     <!-- This is the HTML form that appears in the browser -->
-   	<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-    	Hashtag: <input type="text" name="country">
-    	Tweet: <input type="text" name="animal">
-    	<input type="submit" name="submit">
+		<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
+    	<div class="input-group">
+    		<span class="input-group-addon"/span>
+  			<input type="text" class="form-control" name="country" placeholder="Country" aria-describedby="basic-addon2" value="<?php echo $submitted_country; ?>" >
+			</div>
+    	<br />
+    	<div class="input-group">
+    		<span class="input-group-addon"/span>
+  			<input type="text" class="form-control" name="animal" placeholder="National Animal" aria-describedby="basic-addon2" value="<?php echo $submitted_national_animal; ?>" />
+			</div>
+    	<br />
+    	<div class="btn-group" role="group" aria-label="...">
+    		<button type="submit" value="Edit" class="btn btn-default"><font color="blue">Submit</font></button>
+        <button type="button" formaction="logout.php" value="Edit" class="btn btn-default"><a href="logout.php"><font color="blue">Log out</font></a></button>
+    	</div>
     </form>
-    <form action="logout.php" method="post"><button>Log out</button></form>
 
 	</body>
 </html>
