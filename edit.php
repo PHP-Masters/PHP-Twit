@@ -46,7 +46,6 @@
 		    		echo "<table class='table' cellpadding=10 border=1>";
 		    		while($row = mysql_fetch_row($result)) {
 		        		echo "<tr>";
-						echo "<td>".$row[0]."</td>";
 		        		echo "<td>" . $row[1]."</td>";
 		        		echo "<td>".$row[2]."</td>";
 						echo "<td><a href=".$_SERVER['PHP_SELF']."?id=".$row[0].">Delete</a></td>";
