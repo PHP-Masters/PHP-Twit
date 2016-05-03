@@ -95,13 +95,14 @@
 
     <!-- This is the HTML form that appears in the browser -->
 		<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-    	<div class="input-group">
-    		<span class="input-group-addon"/span>
+			<br />
+			<div class="input-group">
+    		<span class="input-group-addon"></span>
   			<input type="text" class="form-control" name="country" placeholder="Country" aria-describedby="basic-addon2" value="<?php echo $submitted_country; ?>" >
 			</div>
     	<br />
     	<div class="input-group">
-    		<span class="input-group-addon"/span>
+    		<span class="input-group-addon"/><span>
   			<input type="text" class="form-control" name="animal" placeholder="National Animal" aria-describedby="basic-addon2" value="<?php echo $submitted_national_animal; ?>" />
 			</div>
     	<br />
