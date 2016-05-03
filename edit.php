@@ -5,8 +5,15 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-	<?php
 
+	<div class="panel-heading">Twitter</div>
+		<div class="panel-body">
+		  <p>Tweet away!</p>
+		</div>
+<!-- Table -->
+	<table class="Tweet Something">
+
+	<?php
 	    // pass in some info;
 		require("common.php");
 
@@ -96,6 +103,8 @@
 		mysql_close($connection);
 
 	?>
+</table>
+</div>
 
     <!-- This is the HTML form that appears in the browser -->
 		<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
