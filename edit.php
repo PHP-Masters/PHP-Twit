@@ -1,5 +1,16 @@
 <html>
+	<head>
+		<link rel="stylesheet" href="Resources/CSS/bootstrap.css"/>
+        <link rel="stylesheet" href="Resources/CSS/style.css"/>
+		<script src="Resources/JS/jquery.js"/></script>
+		<script src="Resources/JS/bootstrap.js"/></script>
+	</head>
 	<body>
+		<nav class="navbar navbar-light bg-faded" id="navbar-main">
+				<a class="navbar-brand" href="index.php">Twitter</a>
+				<a class="btn btn-primary-outline pull-xs-right" href="index.php">Main Page</a>
+		</nav>
+
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
@@ -15,8 +26,6 @@
 
 		  <!-- Table -->
 		  <table class="Twitter">
-			<body>
-
 		    <!-- This is the HTML form -->
 
 			<?php
