@@ -62,13 +62,13 @@
 		mysql_free_result($result);
 
 		// set variable values to HTML form inputs
-		$country = mysql_escape_string($_POST['country']);
-    	$animal = mysql_escape_string($_POST['animal']);
+		$hashtag = mysql_escape_string($_POST['hashtag']);
+    	$tweet = mysql_escape_string($_POST['tweet']);
 
 		// check to see if user has entered anything
-		if ($animal != "") {
+		if ($tweet != "") {
 	 		// build SQL query
-			$query = "INSERT INTO symbols (country, animal) VALUES ('$country', '$animal')";
+			$query = "INSERT INTO symbols (hashtag, tweet) VALUES ('$hashtag', '$tweet')";
 			// run the query
      		$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
 			// refresh the page to show new update
@@ -101,13 +101,13 @@
 		<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 			<br />
 			<div class="input-group">
-    		<span class="input-group-addon"></span>
-  			<input type="text" class="form-control" name="country" placeholder="Country" aria-describedby="basic-addon2" value="<?php echo $submitted_country; ?>" >
+    		<span class="input-group-addon"/span>
+  			<input type="text" class="form-control" name="hashtag" placeholder="Hashtag" aria-describedby="basic-addon2" value="<?php echo $submitted_hashtag; ?>" >
 			</div>
     	<br />
     	<div class="input-group">
-    		<span class="input-group-addon"/><span>
-  			<input type="text" class="form-control" name="animal" placeholder="National Animal" aria-describedby="basic-addon2" value="<?php echo $submitted_national_animal; ?>" />
+    		<span class="input-group-addon"/span>
+  			<input type="text" class="form-control" name="tweet" placeholder="Tweet" aria-describedby="basic-addon2" value="<?php echo $submitted_tweet; ?>" />
 			</div>
     	<br />
     	<div class="btn-group" role="group" aria-label="...">
