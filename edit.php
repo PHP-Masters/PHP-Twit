@@ -64,13 +64,13 @@
 				mysql_free_result($result);
 
 				// set variable values to HTML form inputs
-				$country = mysql_escape_string($_POST['country']);
-		    	$animal = mysql_escape_string($_POST['animal']);
+				$hashtag = mysql_escape_string($_POST['hashtag']);
+		    	$tweet = mysql_escape_string($_POST['tweet']);
 
 				// check to see if user has entered anything
-				if ($animal != "") {
+				if ($tweet != "") {
 			 		// build SQL query
-					$query = "INSERT INTO symbols (country, animal) VALUES ('$country', '$animal')";
+					$query = "INSERT INTO symbols (hashtag, tweet) VALUES ('$hashtag', '$tweet')";
 					// run the query
 		     		$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
 					// refresh the page to show new update
