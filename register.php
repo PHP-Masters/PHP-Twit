@@ -25,7 +25,7 @@
 
                     <fieldset class="form-group">
                         <label for="password">Password</label>
-                        <input class="form-control" name="password" placeholder="ex. Password">
+                        <input class="form-control" type="password" name="password" placeholder="ex. Password">
                     </fieldset>
                 </div>
                 <div class="card-footer bg-faded text-xs-center">
