@@ -2,14 +2,13 @@
 	<head>
 		<link rel="stylesheet" href="Resources/CSS/bootstrap.css"/>
 		<link rel="stylesheet" href="Resources/CSS/style.css"/>
-		<link rel="stylesheet" href="Resources/CSS/font-awesome.min.css">
+		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 		<script src="Resources/JS/jquery.js"/></script>
 		<script src="Resources/JS/bootstrap.js"/></script>
 		<script src="Resources/JS/style.js"/></script>
 	</head>
 
 	<body>
-		<i class="fa fa-archive"></i>
 		<?php
 			require("common.php");
 			if(empty($_SESSION['user'])) {
@@ -58,7 +57,11 @@
 							<div class=col-xs-11>
 								<h4 class=card-title>".$row[1]." <span class='text-info small'>".$row[3]."</span> <span class='text-muted small'>".$row[4]."</span></h4>
 								<p class=card-text>".$row[2]."</p>
+								<a class='fa fa-thumbs-o-up'></a> ".$row[5]."
+								<a class='fa fa-thumbs-o-down'></a> ".$row[6]."
 							</div>";
+
+							
 							if ('@'.$arr[1] == $row[1]) {
 								echo "<div class=col-xs-1>
 									<a class='btn btn-sm btn-danger pull-xs-right' href=".$_SERVER['PHP_SELF']."?id=".$row[0]." style='margin-top: 15px'>X</a>

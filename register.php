@@ -2,7 +2,7 @@
     <head>
         <link rel="stylesheet" href="Resources/CSS/bootstrap.css"/>
         <link rel="stylesheet" href="Resources/CSS/style.css"/>
-        <link rel="stylesheet" href="Resources/CSS/font-awesome.min.css">
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 		<script src="Resources/JS/jquery.js"/></script>
 		<script src="Resources/JS/bootstrap.js"/></script>
         <script src="Resources/JS/style.js"/></script>
