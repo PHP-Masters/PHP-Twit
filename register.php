@@ -101,7 +101,7 @@
                 }
 
                 $_SESSION['user'] = array ($_POST['email'], $_POST['username'], $_POST['password']);
-                echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=http://localhost:8888/My-Twit/edit.php">';
+                echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=http://localhost:8888/PHP-Twit/edit.php">';
                 die("Redirecting to edit.php");
             }
         ?>
