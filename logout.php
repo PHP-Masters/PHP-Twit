@@ -1,5 +1,4 @@
 <?php
-
     // First we execute our common code to connection to the database and start the session
     require("common.php");
 
@@ -7,6 +6,6 @@
     unset($_SESSION['user']);
 
     // We redirect them to the login page
-    header("Location: signin.php");
-    die("Redirecting to: signin.php");
+    echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=http://localhost:8888/My-Twit/home.php">';
+    exit;
 ?>

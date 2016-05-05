@@ -1,133 +1,95 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="Resources/CSS/bootstrap.css"/>
-        <link rel="stylesheet" href="Resources/CSS/style.css"/>
+		<link rel="stylesheet" href="Resources/CSS/style.css"/>
+		<link rel="stylesheet" href="Resources/CSS/font-awesome.min.css">
 		<script src="Resources/JS/jquery.js"/></script>
 		<script src="Resources/JS/bootstrap.js"/></script>
+		<script src="Resources/JS/style.js"/></script>
 	</head>
+
 	<body>
+		<i class="fa fa-archive"></i>
+		<?php
+			require("common.php");
+			if(empty($_SESSION['user'])) {
+				$location = "http://" . $_SERVER['HTTP_HOST'] . "/login.php";
+				echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=http://localhost:8888/My-Twit/home.php">';
+				die("Redirecting to login.php");
+			}
+			$arr = array_values($_SESSION['user']);
+			$connection = mysql_connect($host, $username, $password) or die ("Unable to connect!");
+			mysql_select_db($dbname) or die ("Unable to select database!");
+			$query = "SELECT * FROM symbols ORDER BY id DESC";
+			$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
+
+			$post = mysql_escape_string($_POST['post']);
+			$hashtags = mysql_escape_string($_POST['hashtags']);
+			$tags = mysql_escape_string($_POST['tags']);
+			if ($post != "") {
+				$query = "INSERT INTO symbols (author, post, hashtags, tags) VALUES ('@$arr[1]', '$post', '$hashtags', '$tags')";
+	     		$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
+		 		echo "<meta http-equiv='refresh' content='0'>";
+			}
+
+			if (isset($_GET['id'])) {
+				echo $_SERVER['PHP_SELF'];
+	    		$query = "DELETE FROM symbols WHERE id = ".$_GET['id'];
+	     		$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
+				$location = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+				echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL='.$location.'">';
+				exit;
+			}
+
+			mysql_close($connection);
+		?>
+
 		<nav class="navbar navbar-light bg-faded" id="navbar-main">
-				<a class="navbar-brand" href="index.php">Twitter</a>
-				<a class="btn btn-primary-outline pull-xs-right" href="index.php">Main Page</a>
+			<a class="navbar-brand" href="edit.php">Twitter</a>
+            <a class="btn btn-primary-outline pull-xs-right" href="logout.php">Log Out</a>
 		</nav>
 
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
-		<div class="panel panel-primary">
-		  <!-- Default panel contents -->
-		  <div class="panel-heading">Twitter</div>
-		  <div class="panel-body">
-		    <p>Type anything you want. Tweet Away!</p>
-		  </div>
-
-		  <!-- Table -->
-		  <table class="Twitter">
-		    <!-- This is the HTML form -->
-
-			<?php
-
-				// set database server access variables:
-				$host = "localhost";
-				$user = "root";
-				$pass = "root";
-				$db = "testdb";
-
-				// open connection
-				$connection = mysql_connect($host, $user, $pass) or die ("Unable to connect!");
-
-				// select database
-				mysql_select_db($db) or die ("Unable to select database!");
-
-				// create query
-				$query = "SELECT * FROM symbols";
-
-				// execute query
-				$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
-
-				// see if any rows were returned
-				if (mysql_num_rows($result) > 0) {
-
-		    		// print them one after another
-		    		echo "<table class='table' cellpadding=10 border=1>";
-		    		while($row = mysql_fetch_row($result)) {
-		        		echo "<tr>";
-		        		echo "<td>" . $row[1]."</td>";
-		        		echo "<td>".$row[2]."</td>";
-						echo "<td><a href=".$_SERVER['PHP_SELF']."?id=".$row[0].">Delete</a></td>";
-		        		echo "</tr>";
-		    		}
-				    echo "</table>";
-
-				} else {
-
-		    		// print status message
-		    		echo "No rows found!";
-				}
-
-				// free result set memory
-				mysql_free_result($result);
-
-				// set variable values to HTML form inputs
-				$hashtag = mysql_escape_string($_POST['hashtag']);
-		    	$tweet = mysql_escape_string($_POST['tweet']);
-
-				// check to see if user has entered anything
-				if ($tweet != "") {
-			 		// build SQL query
-					$query = "INSERT INTO symbols (hashtag, tweet) VALUES ('$hashtag', '$tweet')";
-					// run the query
-		     		$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
-					// refresh the page to show new update
-			 		echo "<meta http-equiv='refresh' content='0'>";
-				}
-
-				// if DELETE pressed, set an id, if id is set then delete it from DB
-				if (isset($_GET['id'])) {
-
-					// create query to delete record
-					echo $_SERVER['PHP_SELF'];
-		    		$query = "DELETE FROM symbols WHERE id = ".$_GET['id'];
-
-					// run the query
-		     		$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
-
-					// reset the url to remove id $_GET variable
-					$location = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
-					echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL='.$location.'">';
-					exit;
-
-				}
-
-				// close connection
-				mysql_close($connection);
-
-			?>
-
-		  </table>
+		<div class="col-xs-8">
+			<div class="container-fluid bg-faded" style="padding-top: 10px">
+				<?php
+					if (mysql_num_rows($result) > 0) {
+						while($row = mysql_fetch_row($result)) {
+							echo "<div class=card card-block><div class=container-fluid>
+							<div class=col-xs-11>
+								<h4 class=card-title>".$row[1]." <span class='text-info small'>".$row[3]."</span> <span class='text-muted small'>".$row[4]."</span></h4>
+								<p class=card-text>".$row[2]."</p>
+							</div>";
+							if ('@'.$arr[1] == $row[1]) {
+								echo "<div class=col-xs-1>
+									<a class='btn btn-sm btn-danger pull-xs-right' href=".$_SERVER['PHP_SELF']."?id=".$row[0]." style='margin-top: 15px'>X</a>
+								</div>";
+							}
+							echo "</div></div>";
+						}
+					}
+					mysql_free_result($result);
+				?>
+			</div>
 		</div>
 
-    <!-- This is the HTML form that appears in the browser -->
-		<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-			<br />
-			<div class="input-group">
-    		<span class="input-group-addon"/span>
-  			<input type="text" class="form-control" name="hashtag" placeholder="Hashtag" aria-describedby="basic-addon2" value="<?php echo $submitted_hashtag; ?>" >
+		<div class="col-xs-4">
+			<div class="container-fluid bg-faded" style="padding-top: 10px">
+				<div class="card">
+	                <h3 class="card-header bg-info text-xs-center">New Tweet</h3>
+	                <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
+	                    <div class="card-block">
+	                        <fieldset class="form-group">
+								<input class="form-control" type="text" name="hashtags" placeholder="ex. #hashtags" style="margin-bottom: 10px"/>
+	                            <input class="form-control" type="text" name="post" placeholder="ex. My Very Own Tweet" style="margin-bottom: 10px"/>
+								<input class="form-control" type="text" name="tags" placeholder="ex. @tag-someone"/>
+							</fieldset>
+	                    </div>
+	                    <div class="card-footer bg-faded text-xs-center">
+	                        <input class="btn btn-info" type="submit" name="submit" value="Tweet"/>
+	                    </div>
+	                </form>
+	            </div>
 			</div>
-    	<br />
-    	<div class="input-group">
-    		<span class="input-group-addon"/span>
-  			<input type="text" class="form-control" name="tweet" placeholder="Tweet" aria-describedby="basic-addon2" value="<?php echo $submitted_tweet; ?>" />
-			</div>
-    	<br />
-    	<div class="btn-group" role="group" aria-label="...">
-    		<button type="submit" value="Edit" class="btn btn-default"><font color="blue">Submit</font></button>
-        <button type="button" formaction="logout.php" value="Edit" class="btn btn-default"><a href="logout.php"><font color="blue">Log out</font></a></button>
-    	</div>
-    </form>
-
+		</div>
 	</body>
 </html>
