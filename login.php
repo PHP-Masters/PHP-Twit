@@ -11,7 +11,8 @@
     <body>
         <nav class="navbar navbar-light bg-faded" id="navbar-main">
 			<a class="navbar-brand" href="home.php">Twitter</a>
-			<a class="btn btn-primary-outline pull-xs-right" href="register.php">Register</a>
+			<a class="btn btn-primary-outline pull-xs-right" id="register-btn" href="register.php">Register</a>
+      <a class="btn btn-primary-outline pull-xs-right" href="home.php">Home</a>
 		</nav>
 
         <div class="container-fluid">

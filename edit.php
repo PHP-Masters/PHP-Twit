@@ -65,11 +65,13 @@
 						//	$dt1 = date('Y-m-d H:i:s');
 							echo "<div class=card card-block><div class=container-fluid>
 							<div class=col-xs-11>
-								<p class=card-text>".$row[7]."</p>
+								<br />
 								<h4 class=card-title>".$row[1]." <span class='text-info small'>".$row[3]."</span> <span class='text-muted small'>".$row[4]."</span></h4>
 								<p class=card-text>".$row[2]."</p>
 								<a class='fa fa-thumbs-o-up'></a> ".$row[5]."
 								<a class='fa fa-thumbs-o-down'></a> ".$row[6]."
+								<p class=card-text>".$row[7]."</p>
+								<br />
 							</div>";
 
 
