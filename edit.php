@@ -10,6 +10,14 @@
 
 	<body>
 		<?php
+		// set the default timezone to use. Available since PHP 5.1
+		date_default_timezone_set('UTC');
+		// Prints something like: 2016-05-05 16:16:41
+		//echo date('Y-m-d H:i:s');
+		$date = date('Y-m-d h:i:s');
+		?>
+
+		<?php
 			require("common.php");
 			if(empty($_SESSION['user'])) {
 				$location = "http://" . $_SERVER['HTTP_HOST'] . "/login.php";
@@ -26,7 +34,7 @@
 			$hashtags = mysql_escape_string($_POST['hashtags']);
 			$tags = mysql_escape_string($_POST['tags']);
 			if ($post != "") {
-				$query = "INSERT INTO symbols (author, post, hashtags, tags) VALUES ('@$arr[1]', '$post', '$hashtags', '$tags')";
+				$query = "INSERT INTO symbols (author, post, hashtags, tags, date) VALUES ('@$arr[1]', '$post', '$hashtags', '$tags', '$date')";
 	     		$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
 		 		echo "<meta http-equiv='refresh' content='0'>";
 			}
@@ -53,15 +61,18 @@
 				<?php
 					if (mysql_num_rows($result) > 0) {
 						while($row = mysql_fetch_row($result)) {
+
+						//	$dt1 = date('Y-m-d H:i:s');
 							echo "<div class=card card-block><div class=container-fluid>
 							<div class=col-xs-11>
+								<p class=card-text>".$row[7]."</p>
 								<h4 class=card-title>".$row[1]." <span class='text-info small'>".$row[3]."</span> <span class='text-muted small'>".$row[4]."</span></h4>
 								<p class=card-text>".$row[2]."</p>
 								<a class='fa fa-thumbs-o-up'></a> ".$row[5]."
 								<a class='fa fa-thumbs-o-down'></a> ".$row[6]."
 							</div>";
 
-							
+
 							if ('@'.$arr[1] == $row[1]) {
 								echo "<div class=col-xs-1>
 									<a class='btn btn-sm btn-danger pull-xs-right' href=".$_SERVER['PHP_SELF']."?id=".$row[0]." style='margin-top: 15px'>X</a>
