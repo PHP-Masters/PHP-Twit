@@ -68,6 +68,7 @@
 								<br />
 								<h4 class=card-title>".$row[1]." <span class='text-info small'>".$row[3]."</span> <span class='text-muted small'>".$row[4]."</span></h4>
 								<p class=card-text>".$row[2]."</p>
+<<<<<<< Updated upstream
 								<a class='fa fa-thumbs-o-up'></a> ".$row[5]."
 								<a class='fa fa-thumbs-o-down'></a> ".$row[6]."
 								<p class=card-text>".$row[7]."</p>
@@ -75,6 +76,14 @@
 							</div>";
 
 
+=======
+								<form method='post' action='edit.php'>
+									<a class='fa fa-thumbs-o-up'> ".$row[5]."</a>
+									<a class='fa fa-thumbs-o-down'> ".$row[6]."</a>
+								</form>
+							</div>";
+
+>>>>>>> Stashed changes
 							if ('@'.$arr[1] == $row[1]) {
 								echo "<div class=col-xs-1>
 									<a class='btn btn-sm btn-danger pull-xs-right' href=".$_SERVER['PHP_SELF']."?id=".$row[0]." style='margin-top: 15px'>X</a>
@@ -83,6 +92,7 @@
 							echo "</div></div>";
 						}
 					}
+
 					mysql_free_result($result);
 				?>
 			</div>
