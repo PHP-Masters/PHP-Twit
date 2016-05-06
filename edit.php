@@ -14,7 +14,7 @@
 		date_default_timezone_set('America/Toronto');
 		// Prints something like: 2016-05-05 16:16:41
 		//echo date('Y-m-d H:i:s');
-		$date = date('Y-m-d h:i:s');
+		$date = date('Y-m-d H:i:s');
 		?>
 
 		<?php
