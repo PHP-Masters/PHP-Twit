@@ -2,17 +2,16 @@
     <head>
         <link rel="stylesheet" href="Resources/CSS/bootstrap.css"/>
         <link rel="stylesheet" href="Resources/CSS/style.css"/>
-        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 		<script src="Resources/JS/jquery.js"/></script>
 		<script src="Resources/JS/bootstrap.js"/></script>
-        <script src="Resources/JS/style.js"/></script>
+        <script src="Resources/JS/script.js"/></script>
     </head>
 
     <body>
         <nav class="navbar navbar-light bg-faded" id="navbar-main">
 			<a class="navbar-brand" href="home.php">Twitter</a>
 			<a class="btn btn-primary-outline pull-xs-right" id="register-btn" href="register.php">Register</a>
-      <a class="btn btn-primary-outline pull-xs-right" href="home.php">Home</a>
+            <a class="btn btn-primary-outline pull-xs-right" href="home.php">Home</a>
 		</nav>
 
         <div class="container-fluid">
@@ -20,15 +19,32 @@
                 <h3 class="card-header bg-info text-xs-center">Login</h3>
                 <form action="login.php" method="post">
                     <div class="card-block">
-                        <fieldset class="form-group">
-                            <label>User Name</label>
-                            <input class="form-control" type="text" name="username" placeholder="ex. John Smith"/>
-                        </fieldset>
+                        <?php
+                            if (isset($_GET['username'])) {
+                                echo '<fieldset class="form-group">
+                                <label>Username</label>
+                                <input class="form-control" type="text" name="username" value='.$_GET["username"].'>
+                                </fieldset>';
+                            } else {
+                                echo '<fieldset class="form-group">
+                                <label>Username</label>
+                                <input class="form-control" type="text" name="username" placeholder="ex. John Smith"/>
+                                </fieldset>';
+                            }
 
-                        <fieldset class="form-group">
-                            <label>Password</label>
-                            <input class="form-control" type="password" name="password" placeholder="ex. Password"/>
-                        </fieldset>
+                            if (isset($_GET['failed'])) {
+                                echo '<fieldset class="form-group has-danger">
+                                    <label>Password</label>
+                                    <input class="form-control form-control-danger" type="password" name="password" placeholder="ex. Password"/>
+                                    <label class="form-control-label small">You may have entered the wrong password.</label>
+                                    </fieldset>';
+                            } else {
+                                echo '<fieldset class="form-group">
+                                    <label>Password</label>
+                                    <input class="form-control" type="password" name="password" placeholder="ex. Password"/>
+                                    </fieldset>';
+                            }
+                        ?>
                     </div>
 
                     <div class="card-footer bg-faded text-xs-center" id="login-btn">
@@ -69,9 +85,10 @@
                     unset($row['password']);
                     $_SESSION['user'] = array ($row['email'], $_POST['username'], $_POST['password']);
                     echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=http://localhost:8888/PHP-Twit/edit.php">';
-                    die("Redirecting to login.php");
+                    die();
                 } else {
-
+                    echo '<META HTTP-EQUIV="refresh" CONTENT=0;URL=http://localhost:8888/PHP-Twit/login.php?failed=true&username='.$_POST["username"].'>';
+                    die();
                 }
             }
         ?>

@@ -13,5 +13,9 @@
 			<a class="btn btn-primary-outline pull-xs-right" id="register-btn" href="register.php">Register</a>
             <a class="btn btn-primary-outline pull-xs-right" href="login.php">Login</a>
 		</nav>
+
+        <div class="container-fluid">
+
+        </div>
     </body>
 </html>
