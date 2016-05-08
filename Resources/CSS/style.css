@@ -9,3 +9,15 @@
 form {
     margin-bottom: 0px;
 }
+
+.author-link, .author-link:hover {
+    color: black;
+}
+
+.hashtag-link, .hashtag-link:hover {
+    color: #5bc0de;
+}
+
+.usertag-link, .usertag-link:hover {
+    color: #818a91;
+}
