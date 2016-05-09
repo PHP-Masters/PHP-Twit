@@ -10,19 +10,6 @@ form {
     margin-bottom: 0px;
 }
 
-<<<<<<< HEAD
-h1 {
-  color: blue;
-}
-
-p {
-  text-align: center;
-}
-
-h2 {
-text-align: center;
-
-=======
 .author-link, .author-link:hover {
     color: black;
 }
@@ -33,5 +20,8 @@ text-align: center;
 
 .usertag-link, .usertag-link:hover {
     color: #818a91;
->>>>>>> origin/master
+}
+
+.center {
+    text-align: center;
 }
