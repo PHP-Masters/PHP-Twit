@@ -86,8 +86,13 @@
 								}
 								echo "</span><span class='card-text small pull-xs-right'>".$row[7]."</span></h4>
 								<p class=card-text>".$row[2]."</p>
+<<<<<<< HEAD
 								<a class='fa fa-thumbs-o-up post-like' href=like.php?id=".$row[0]."></a> ".$row[5]."
 								<a class='fa fa-thumbs-o-down post-dislike' href=dislike.php?id=".$row[0]."></a> ".$row[6]."
+=======
+								<a class='fa fa-thumbs-o-up post-like'></a> ".$row[5]."
+								<a class='fa fa-thumbs-o-down post-dislike'></a> ".$row[6]."
+>>>>>>> origin/master
 								<br />
 							</div>";
 							if ('@'.$arr[1] == $row[1]) {
