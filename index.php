@@ -86,8 +86,8 @@
 								}
 								echo "</span><span class='card-text small pull-xs-right'>".$row[7]."</span></h4>
 								<p class=card-text>".$row[2]."</p>
-								<button class='fa fa-thumbs-o-up post-like'></button> ".$row[5]."
-								<button class='fa fa-thumbs-o-down post-dislike'></button> ".$row[6]."
+								<a class='fa fa-thumbs-o-up post-like'></a> ".$row[5]."
+								<a class='fa fa-thumbs-o-down post-dislike'></a> ".$row[6]."
 								<br />
 							</div>";
 							if ('@'.$arr[1] == $row[1]) {
