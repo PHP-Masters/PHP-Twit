@@ -10,7 +10,7 @@
 
     <body>
         <nav class="navbar navbar-light bg-faded" id="navbar-main">
-			<a class="navbar-brand" href="edit.php">Twitter</a>
+			<a class="navbar-brand" href="index.php">Tweeter</a>
 			<ul class="nav navbar-nav">
 				<li class="nav-item">
 					<a class="nav-link" href="search.php">Search</a>

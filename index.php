@@ -56,7 +56,7 @@
 		?>
 
 		<nav class="navbar navbar-light bg-faded" id="navbar-main">
-			<a class="navbar-brand" href="edit.php">Twitter</a>
+			<a class="navbar-brand" href="index.php">Tweeter</a>
 			<ul class="nav navbar-nav">
 				<li class="nav-item">
 					<a class="nav-link" href="search.php">Search</a>
@@ -111,15 +111,15 @@
 		<div class="col-xs-4">
 			<div class="container-fluid bg-faded" style="padding-top: 10px">
 				<div class="card">
-	                <h3 class="card-header bg-info text-xs-center">New Tweet</h3>
+	                <h3 class="card-header bg-info text-xs-center">New Post</h3>
 	                <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 	                    <div class="card-block">
 	                        <fieldset class="form-group">
-	                            <input class="form-control" type="text" name="post" placeholder="My Very Own Tweet" style="margin-bottom: 10px"/>
+	                            <input class="form-control" type="text" name="post" placeholder="My Very Own Post" style="margin-bottom: 10px"/>
 							</fieldset>
 	                    </div>
 	                    <div class="card-footer bg-faded text-xs-center">
-	                        <input class="btn btn-info" type="submit" name="submit" value="Tweet"/>
+	                        <input class="btn btn-info" type="submit" name="submit" value="Post"/>
 	                    </div>
 	                </form>
 	            </div>

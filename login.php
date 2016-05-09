@@ -9,7 +9,7 @@
 
     <body>
         <nav class="navbar navbar-light bg-faded" id="navbar-main">
-			<a class="navbar-brand" href="home.php">Twitter</a>
+			<a class="navbar-brand" href="home.php">Tweeter</a>
 			<a class="btn btn-primary-outline pull-xs-right" id="register-btn" href="register.php">Register</a>
             <a class="btn btn-primary-outline pull-xs-right" href="home.php">Home</a>
 		</nav>
@@ -84,7 +84,7 @@
                     unset($row['salt']);
                     unset($row['password']);
                     $_SESSION['user'] = array ($row['email'], $_POST['username'], $_POST['password']);
-                    echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=http://localhost:8888/PHP-Twit/edit.php">';
+                    echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=http://localhost:8888/PHP-Twit/index.php">';
                     die();
                 } else {
                     echo '<META HTTP-EQUIV="refresh" CONTENT=0;URL=http://localhost:8888/PHP-Twit/login.php?failed=true&username='.$_POST["username"].'>';

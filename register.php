@@ -9,9 +9,9 @@
 
     <body>
         <nav class="navbar navbar-light bg-faded" id="navbar-main">
-			<a class="navbar-brand" href="home.php">Twitter</a>
+			<a class="navbar-brand" href="home.php">Tweeter</a>
 			<a class="btn btn-primary-outline pull-xs-right" id="register-btn" href="login.php">Login</a>
-      <a class="btn btn-primary-outline pull-xs-right" href="home.php">Home</a>
+            <a class="btn btn-primary-outline pull-xs-right" href="home.php">Home</a>
 		</nav>
 
         <div class="container-fluid">
@@ -160,7 +160,7 @@
                     }
 
                     $_SESSION['user'] = array ($_POST['email'], $_POST['username'], $_POST['password']);
-                    echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=http://localhost:8888/PHP-Twit/edit.php">';
+                    echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=http://localhost:8888/PHP-Twit/index.php">';
                     die();
                 }
             }
