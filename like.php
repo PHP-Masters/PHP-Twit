@@ -1,10 +1,5 @@
 <?php
     require("common.php");
-    if(empty($_SESSION['user'])) {
-        $location = "http://" . $_SERVER['HTTP_HOST'] . "/login.php";
-        echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=http://localhost:8888/PHP-Twit/home.php">';
-        die("Redirecting to login.php");
-    }
     $arr = array_values($_SESSION['user']);
     $connection = mysql_connect($host, $username, $password) or die ("Unable to connect!");
     mysql_select_db($dbname) or die ("Unable to select database!");
@@ -15,6 +10,6 @@
         $result = mysql_query($command) or die ("Error in query: $command. ".mysql_error());
     }
     mysql_free_result($result);
-    echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=http://localhost:8888/PHP-Twit/index.php">';
+    echo '<META HTTP-EQUIV="refresh" CONTENT=0;URL=http://localhost:8888'.$_GET['site'].'>';
     die();
 ?>
