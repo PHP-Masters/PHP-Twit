@@ -11,7 +11,9 @@
 	<body>
 		<?php
 			date_default_timezone_set('America/Toronto');
-			$date = date('Y-m-d H:i:s');
+			$date = date('Y-m-d');
+			$time = date('H:i:s');
+
 
 			require("common.php");
 			if(empty($_SESSION['user'])) {
@@ -38,7 +40,7 @@
 						$users = $users.$word." ";
 					}
 				}
-				$query = "INSERT INTO symbols (author, post, hashtags, tags, date) VALUES ('@$arr[1]', '$post', '$hashtags', '$users', '$date')";
+				$query = "INSERT INTO symbols (author, post, hashtags, tags, date, time) VALUES ('@$arr[1]', '$post', '$hashtags', '$users', '$date', '$time')";
 	     		$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
 		 		echo "<meta http-equiv='refresh' content='0'>";
 			}
@@ -90,10 +92,14 @@
 								foreach ($usertags as $line) {
 									echo "<a class=usertag-link href=user.php?user=".substr($line, 1).">".$line." </a>";
 								}
-								echo "</span><span class='card-text small pull-xs-right'>".$row[7]."</span></h4>
-								<p class=card-text>".$row[2]."</p>
-								<a class='fa fa-thumbs-o-up post-like' href=like.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."></a> ".$row[5]."
-								<a class='fa fa-thumbs-o-down post-dislike' href=dislike.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."></a> ".$row[6]."
+								echo "</span><span class='card-text small pull-xs-right'>".$row[7]."</span> </h4>";
+								if ($row[7] == $date) {
+									echo "<h4> <span class='card-text small pull-xs-right'>".$row[8]."</span> </h4>";
+								}
+								echo "<p class=card-text>".$row[2]."</p>
+								<a class='fa fa-thumbs-o-up post-like'></a> ".$row[5]."
+								<a class='fa fa-thumbs-o-down post-dislike'></a> ".$row[6]."
+								<br />
 							</div>";
 							if ('@'.$arr[1] == $row[1]) {
 								echo "<div class=col-xs-1>
