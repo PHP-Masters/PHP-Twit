@@ -6,6 +6,6 @@
     unset($_SESSION['user']);
 
     // We redirect them to the login page
-    echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=http://localhost:8888/PHP-Twit/home.php">';
+    echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=home.php">';
     exit;
 ?>

@@ -141,7 +141,7 @@
                 }
 
                 if ($failed != "") {
-                    echo '<META HTTP-EQUIV="refresh" CONTENT=0;URL=http://localhost:8888/PHP-Twit/register.php?failed='.$failed.'&email='.$_POST["email"].'&username='.$_POST["username"].'>';
+                    echo '<META HTTP-EQUIV="refresh" CONTENT=0;URL=register.php?failed='.$failed.'&email='.$_POST["email"].'&username='.$_POST["username"].'>';
                     die();
                 } else {
                     $query = "INSERT INTO users (username, password, salt, email) VALUES (:username, :password, :salt, :email)";
@@ -160,7 +160,7 @@
                     }
 
                     $_SESSION['user'] = array ($_POST['email'], $_POST['username'], $_POST['password']);
-                    echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=http://localhost:8888/PHP-Twit/index.php">';
+                    echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=index.php">';
                     die();
                 }
             }

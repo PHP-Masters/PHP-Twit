@@ -26,7 +26,7 @@
             require("common.php");
             if(empty($_SESSION['user'])) {
                 $location = "http://" . $_SERVER['HTTP_HOST'] . "/login.php";
-                echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=http://localhost:8888/PHP-Twit/home.php">';
+                echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=home.php">';
                 die("Redirecting to login.php");
             }
             $arr = array_values($_SESSION['user']);
@@ -76,14 +76,14 @@
                                 echo "<div class=card card-block><div class=container-fluid>
                                 <div class=col-xs-11>
                                     <br />
-                                    <h4 class=card-title><a class=author-link href=http://localhost:8888/PHP-Twit/user.php?user=".substr($row[1], 1).">".$row[1]."</a>
+                                    <h4 class=card-title><a class=author-link href=user.php?user=".substr($row[1], 1).">".$row[1]."</a>
                                     <span class='small'>";
                                     foreach ($hashtags as $line) {
-                                        echo "<a class=hashtag-link href=http://localhost:8888/PHP-Twit/hashtag.php?hashtag=".substr($line, 1).">".$line." </a>";
+                                        echo "<a class=hashtag-link href=hashtag.php?hashtag=".substr($line, 1).">".$line." </a>";
                                     }
                                     echo "</span><span class='small'>";
                                     foreach ($usertags as $line) {
-                                        echo "<a class=usertag-link href=http://localhost:8888/PHP-Twit/user.php?user=".substr($line, 1).">".$line." </a>";
+                                        echo "<a class=usertag-link href=user.php?user=".substr($line, 1).">".$line." </a>";
                                     }
                                     echo "</span><span class='card-text small pull-xs-right'>".$row[7]."</span></h4>
                                     <p class=card-text>".$row[2]."</p>

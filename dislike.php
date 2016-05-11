@@ -10,6 +10,6 @@
         $result = mysql_query($command) or die ("Error in query: $command. ".mysql_error());
     }
     mysql_free_result($result);
-    echo '<META HTTP-EQUIV="refresh" CONTENT=0;URL=http://localhost:8888'.$_GET['site'].'>';
+    echo '<META HTTP-EQUIV="refresh" CONTENT=0;URL='.$_GET['site'].'>';
     die();
 ?>

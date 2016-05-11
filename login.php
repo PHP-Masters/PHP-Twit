@@ -84,10 +84,10 @@
                     unset($row['salt']);
                     unset($row['password']);
                     $_SESSION['user'] = array ($row['email'], $_POST['username'], $_POST['password']);
-                    echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=http://localhost:8888/PHP-Twit/index.php">';
+                    echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=index.php">';
                     die();
                 } else {
-                    echo '<META HTTP-EQUIV="refresh" CONTENT=0;URL=http://localhost:8888/PHP-Twit/login.php?failed=true&username='.$_POST["username"].'>';
+                    echo '<META HTTP-EQUIV="refresh" CONTENT=0;URL=login.php?failed=true&username='.$_POST["username"].'>';
                     die();
                 }
             }
