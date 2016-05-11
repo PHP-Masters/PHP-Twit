@@ -22,7 +22,7 @@
 			$arr = array_values($_SESSION['user']);
 			$connection = mysql_connect($host, $username, $password) or die ("Unable to connect!");
 			mysql_select_db($dbname) or die ("Unable to select database!");
-			$query = "SELECT * FROM symbols ORDER BY likes DESC";
+			$query = "SELECT * FROM symbols WHERE author = '@".$arr[1]."' ORDER BY id DESC";
 			$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
 
 			if (isset($_GET['id'])) {
@@ -33,8 +33,6 @@
 				echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL='.$location.'">';
 				exit;
 			}
-
-			mysql_close($connection);
 		?>
 
         <nav class="navbar navbar-light bg-faded" id="navbar-main">
@@ -47,16 +45,35 @@
 					<a class="nav-link" href="search.php">Search</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link active" href="trending.php">Trending</a>
+					<a class="nav-link" href="trending.php">Trending</a>
 				</li>
                 <li class="nav-item">
-					<a class="nav-link" href="userpage.php">My Page</a>
+					<a class="nav-link active" href="userpage.php">My Page</a>
 				</li>
 			</ul>
             <a class="btn btn-primary-outline pull-xs-right" href="logout.php">Log Out</a>
 		</nav>
 
         <div class="container-fluid">
+            <div class="jumbotron" style="padding-top: 20px; padding-bottom: 20px;">
+                <?php
+                    $query_bio = "SELECT * FROM users WHERE username = '".$arr[1]."'";
+    			    $result_bio = mysql_query($query_bio) or die ("Error in query: $query_bio. ".mysql_error());
+                    $row_bio = mysql_fetch_row($result_bio);
+                    echo '<h4 class="display-4"> @'.$row_bio[1].'</h4>';
+                    if ($row_bio[5] != "") {
+                        echo '<p class="lead">'.$row_bio[5].'</p>';
+                    } else {
+                        echo '<p class="lead">Add a bio so people can learn a bit about you.</p>';
+                    }
+                    echo '<button class="btn btn-info-outline" data-toggle="modal" data-target="#changebio">
+                        Edit Your Bio
+                    </button>';
+                ?>
+            </div>
+        </div>
+
+        <div class="col-xs-8">
     		<div class="container-fluid bg-faded" style="padding-top: 10px">
     			<?php
     				if (mysql_num_rows($result) > 0) {
@@ -64,7 +81,7 @@
     						$hashtags = explode(" ", $row[3]);
     						$usertags = explode(" ", $row[4]);
     						echo "<div class=card card-block><div class=container-fluid>
-    						<div class=col-xs-11>
+    					    <div class=col-xs-11>
     							<br />
     							<h4 class=card-title><a class=author-link href=user.php?user=".substr($row[1], 1).">".$row[1]."</a>
     							<span class='small'>";
@@ -79,7 +96,7 @@
     							<p class=card-text>".$row[2]."</p>
     							<a class='fa fa-thumbs-o-up post-like' href=like.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."></a> ".$row[5]."
     							<a class='fa fa-thumbs-o-down post-dislike' href=dislike.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."></a> ".$row[6]."
-    						</div>";
+    						    </div>";
     						if ('@'.$arr[1] == $row[1]) {
     							echo "<div class=col-xs-1>
     								<a class='btn btn-sm btn-danger pull-xs-right' href=".$_SERVER['PHP_SELF']."?id=".$row[0]." style='margin-top: 15px'>X</a>
@@ -96,6 +113,12 @@
     				mysql_free_result($result);
     			?>
     		</div>
+        </div>
+
+        <div class="col-xs-4">
+    		<div class="container-fluid bg-faded" style="padding-top: 10px">
+                Hello
+            </div>
         </div>
     </body>
 </html>

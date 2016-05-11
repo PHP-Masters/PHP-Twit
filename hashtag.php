@@ -21,6 +21,9 @@
 				<li class="nav-item">
 					<a class="nav-link" href="trending.php">Trending</a>
 				</li>
+                <li class="nav-item">
+					<a class="nav-link" href="userpage.php">My Page</a>
+				</li>
 			</ul>
             <a class="btn btn-primary-outline pull-xs-right" href="logout.php">Log Out</a>
 		</nav>
