@@ -57,6 +57,13 @@
 		</nav>
 
         <div class="container-fluid">
+            <div class="jumbotron" style="padding-top: 20px; padding-bottom: 20px;">
+                <h4 class="display-4">Trending Posts</h4>
+                <p class="lead">These posts have the highest number of likes on the app</p>
+            </div>
+        </div>
+
+        <div class="container-fluid">
     		<div class="container-fluid bg-faded" style="padding-top: 10px">
     			<?php
     				if (mysql_num_rows($result) > 0) {

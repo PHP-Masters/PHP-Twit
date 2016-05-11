@@ -25,6 +25,13 @@
 			$query = "SELECT * FROM symbols WHERE author = '@".$arr[1]."' ORDER BY id DESC";
 			$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
 
+            $new_bio = mysql_escape_string($_POST['bio']);
+			if ($new_bio != "") {
+				$command = "UPDATE users SET bio = '".$new_bio."' WHERE username = '".$arr[1]."'";
+	     		$result_command = mysql_query($command) or die ("Error in query: $command. ".mysql_error());
+		 		echo "<meta http-equiv='refresh' content='0'>";
+			}
+
 			if (isset($_GET['id'])) {
 				echo $_SERVER['PHP_SELF'];
 	    		$query = "DELETE FROM symbols WHERE id = ".$_GET['id'];
@@ -70,6 +77,28 @@
                         Edit Your Bio
                     </button>';
                 ?>
+            </div>
+        </div>
+
+        <div class="modal fade" id="changebio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Change Your Bio</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="userpage.php" method="post">
+    	                    <input class="form-control" type="text" name="bio" value="<?php echo $row_bio[5] ?>" style="margin-bottom: 10px"/>
+                            <div class="text-xs-right">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <input class="btn btn-info" type="submit" name="submit" value="Save Changes"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
 

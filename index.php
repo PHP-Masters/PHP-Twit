@@ -73,6 +73,13 @@
             <a class="btn btn-primary-outline pull-xs-right" href="logout.php">Log Out</a>
 		</nav>
 
+		<div class="container-fluid">
+            <div class="jumbotron" style="padding-top: 20px; padding-bottom: 20px;">
+                <h4 class="display-4">Most Recent</h4>
+                <p class="lead">This a list of all the posts on the app.</p>
+            </div>
+        </div>
+
 		<div class="col-xs-8">
 			<div class="container-fluid bg-faded" style="padding-top: 10px">
 				<?php
