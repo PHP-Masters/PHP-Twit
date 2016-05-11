@@ -12,7 +12,7 @@
 		<?php
 			date_default_timezone_set('America/Toronto');
 			$date = date('Y-m-d');
-			$time = date('H:i:s');
+			$time = date('i');
 
 
 			require("common.php");
@@ -90,12 +90,14 @@
 								}
 								echo "</span><span class='small'>";
 								foreach ($usertags as $line) {
-									echo "<a class=usertag-link href=user.php?user=".substr($line, 1).">".$line." </a>";
+									echo "<a class=usertag-link href=user.php?user=".substr($line, 1).">".$line." </a> </h4>";
 								}
-								echo "</span><span class='card-text small pull-xs-right'>".$row[7]."</span> </h4>";
 								if ($row[7] == $date) {
-									echo "<h4> <span class='card-text small pull-xs-right'>".$row[8]."</span> </h4>";
-								}
+									$time = $time - $row[8];
+									echo "<h4><span class='card-text small pull-xs-right'><p>".$time." minutes ago </p> </span></h4>";
+								} else {
+									echo "<h4><span class='card-text small pull-xs-right'>".$row[7]."</span> </h4>";
+								}$time = date('i');
 								echo "<p class=card-text>".$row[2]."</p>
 								<a class='fa fa-thumbs-o-up post-like'></a> ".$row[5]."
 								<a class='fa fa-thumbs-o-down post-dislike'></a> ".$row[6]."
