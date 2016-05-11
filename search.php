@@ -10,10 +10,16 @@
 
     <body>
         <nav class="navbar navbar-light bg-faded" id="navbar-main">
-			<a class="navbar-brand" href="index.php">Tweeter</a>
+			<a class="navbar-brand" href="">Tweeter</a>
 			<ul class="nav navbar-nav">
-				<li class="nav-item active">
-					<a class="nav-link" href="search.php">Search</a>
+				<li class="nav-item">
+					<a class="nav-link" href="index.php">All</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" href="search.php">Search</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="trending.php">Trending</a>
 				</li>
 			</ul>
             <a class="btn btn-primary-outline pull-xs-right" href="logout.php">Log Out</a>

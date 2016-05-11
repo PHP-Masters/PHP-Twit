@@ -1,15 +1,15 @@
 <html>
-	<head>
-		<link rel="stylesheet" href="Resources/CSS/bootstrap.css"/>
-		<link rel="stylesheet" href="Resources/CSS/style.css"/>
-		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-		<script src="Resources/JS/jquery.js"/></script>
-		<script src="Resources/JS/bootstrap.js"/></script>
-		<script src="Resources/JS/script.js"/></script>
-	</head>
+    <head>
+        <link rel="stylesheet" href="Resources/CSS/bootstrap.css"/>
+        <link rel="stylesheet" href="Resources/CSS/style.css"/>
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+        <script src="Resources/JS/jquery.js"/></script>
+        <script src="Resources/JS/bootstrap.js"/></script>
+        <script src="Resources/JS/script.js"/></script>
+    </head>
 
-	<body>
-		<?php
+    <body>
+        <?php
 			date_default_timezone_set('America/Toronto');
 			$date = date('Y-m-d H:i:s');
 
@@ -22,26 +22,13 @@
 			$arr = array_values($_SESSION['user']);
 			$connection = mysql_connect($host, $username, $password) or die ("Unable to connect!");
 			mysql_select_db($dbname) or die ("Unable to select database!");
-			$query = "SELECT * FROM symbols ORDER BY id DESC";
+			$query = "SELECT * FROM symbols ORDER BY likes DESC";
 			$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
 
 			$post = mysql_escape_string($_POST['post']);
 			$post_list = explode(" ", $post);
 			$hashtags = "";
 			$users = "";
-
-			if ($post != "") {
-				foreach ($post_list as $word) {
-					if ($word[0] == "#") {
-						$hashtags = $hashtags.$word." ";
-					} else if ($word[0] == "@") {
-						$users = $users.$word." ";
-					}
-				}
-				$query = "INSERT INTO symbols (author, post, hashtags, tags, date) VALUES ('@$arr[1]', '$post', '$hashtags', '$users', '$date')";
-	     		$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
-		 		echo "<meta http-equiv='refresh' content='0'>";
-			}
 
 			if (isset($_GET['id'])) {
 				echo $_SERVER['PHP_SELF'];
@@ -55,23 +42,23 @@
 			mysql_close($connection);
 		?>
 
-		<nav class="navbar navbar-light bg-faded" id="navbar-main">
+        <nav class="navbar navbar-light bg-faded" id="navbar-main">
 			<a class="navbar-brand" href="">Tweeter</a>
 			<ul class="nav navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link active" href="index.php">All</a>
+					<a class="nav-link" href="index.php">All</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="search.php">Search</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="trending.php">Trending</a>
+					<a class="nav-link active" href="trending.php">Trending</a>
 				</li>
 			</ul>
             <a class="btn btn-primary-outline pull-xs-right" href="logout.php">Log Out</a>
 		</nav>
 
-		<div class="col-xs-8">
+        <div class="col-xs-8">
 			<div class="container-fluid bg-faded" style="padding-top: 10px">
 				<?php
 					if (mysql_num_rows($result) > 0) {
@@ -112,23 +99,5 @@
 				?>
 			</div>
 		</div>
-
-		<div class="col-xs-4">
-			<div class="container-fluid bg-faded" style="padding-top: 10px">
-				<div class="card">
-	                <h3 class="card-header bg-info text-xs-center">New Post</h3>
-	                <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-	                    <div class="card-block">
-	                        <fieldset class="form-group">
-	                            <input class="form-control" type="text" name="post" placeholder="My Very Own Post" style="margin-bottom: 10px"/>
-							</fieldset>
-	                    </div>
-	                    <div class="card-footer bg-faded text-xs-center">
-	                        <input class="btn btn-info" type="submit" name="submit" value="Post"/>
-	                    </div>
-	                </form>
-	            </div>
-			</div>
-		</div>
-	</body>
+    </body>
 </html>
