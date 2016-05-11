@@ -98,7 +98,7 @@
 										echo "</span><span class='card-text small pull-xs-right'><p>".$time." minutes ago </p> </span></h4>";
 									}	else {
 										$time = $time/60;
-										echo "</span><span class='card-text small pull-xs-right'><p>".$time." minutes ago </p> </span></h4>";
+										echo "</span><span class='card-text small pull-xs-right'><p>".$time." hours ago </p> </span></h4>";
 									}
 								} else {
 									echo "</span><span class='card-text small pull-xs-right'>".$row[7]."</span> </h4>";
