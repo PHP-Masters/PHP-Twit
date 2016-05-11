@@ -93,7 +93,7 @@
 									echo "<a class=usertag-link href=user.php?user=".substr($line, 1).">".$line." </a>";
 								}
 								if ($row[7] == $date) {
-									$time = $time - $row[8];
+									$time = $row[8] - $time;
 									if ($time < 60) {
 										echo "</span><span class='card-text small pull-xs-right'><p>".$time." minutes ago </p> </span></h4>";
 									}	else {
