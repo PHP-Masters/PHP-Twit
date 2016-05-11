@@ -69,9 +69,6 @@
 				<li class="nav-item">
 					<a class="nav-link" href="trending.php">Trending</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="userpage.php">My Page</a>
-				</li>
 			</ul>
             <a class="btn btn-primary-outline pull-xs-right" href="logout.php">Log Out</a>
 		</nav>
@@ -93,13 +90,18 @@
 								}
 								echo "</span><span class='small'>";
 								foreach ($usertags as $line) {
-									echo "<a class=usertag-link href=user.php?user=".substr($line, 1).">".$line." </a> </h4>";
+									echo "<a class=usertag-link href=user.php?user=".substr($line, 1).">".$line." </a>";
 								}
 								if ($row[7] == $date) {
 									$time = $time - $row[8];
-									echo "<h4><span class='card-text small pull-xs-right'><p>".$time." minutes ago </p> </span></h4>";
+									if ($time < 60) {
+										echo "</span><span class='card-text small pull-xs-right'><p>".$time." minutes ago </p> </span></h4>";
+									}	else {
+										$time = $time/60;
+										echo "</span><span class='card-text small pull-xs-right'><p>".$time." minutes ago </p> </span></h4>";
+									}
 								} else {
-									echo "<h4><span class='card-text small pull-xs-right'>".$row[7]."</span> </h4>";
+									echo "</span><span class='card-text small pull-xs-right'>".$row[7]."</span> </h4>";
 								}$time = date('i');
 								echo "<p class=card-text>".$row[2]."</p>
 								<a class='fa fa-thumbs-o-up post-like'></a> ".$row[5]."
