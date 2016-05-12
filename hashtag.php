@@ -22,7 +22,7 @@
 					<a class="nav-link" href="trending.php">Trending</a>
 				</li>
                 <li class="nav-item">
-					<a class="nav-link" href="userpage.php">My Page</a>
+					<a class="nav-link" href="<?php echo 'userpage.php?user='.$arr[1]; ?>">My Page</a>
 				</li>
 			</ul>
             <a class="btn btn-primary-outline pull-xs-right" href="logout.php">Log Out</a>
@@ -57,19 +57,19 @@
                             echo "<div class=card card-block><div class=container-fluid>
                             <div class=col-xs-11>
                                 <br />
-                                <h4 class=card-title><a class=author-link href=http://localhost:8888/PHP-Twit/user.php?user=".substr($row[1], 1).">".$row[1]."</a>
+                                <h4 class=card-title><a class=author-link href=userpage.php?user=".substr($row[1], 1).">".$row[1]."</a>
                                 <span class='small'>";
                                 foreach ($hashtags as $line) {
-                                    echo "<a class=hashtag-link href=http://localhost:8888/PHP-Twit/hashtag.php?hashtag=".substr($line, 1).">".$line." </a>";
+                                    echo "<a class=hashtag-link href=hashtag.php?hashtag=".substr($line, 1).">".$line." </a>";
                                 }
                                 echo "</span><span class='small'>";
                                 foreach ($usertags as $line) {
-                                    echo "<a class=usertag-link href=http://localhost:8888/PHP-Twit/user.php?user=".substr($line, 1).">".$line." </a>";
+                                    echo "<a class=usertag-link href=userpage.php?user=".substr($line, 1).">".$line." </a>";
                                 }
                                 echo "</span><span class='card-text small pull-xs-right'>".$row[7]."</span></h4>
                                 <p class=card-text>".$row[2]."</p>
-                                <a class='fa fa-thumbs-o-up post-like' href=like.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."></a> ".$row[5]."
-								<a class='fa fa-thumbs-o-down post-dislike' href=dislike.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."></a> ".$row[6]."                                <br />
+                                <a class='fa fa-thumbs-o-up post-like' href=like.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."?hashtag=".$_GET['hashtag']."></a> ".$row[5]."
+								<a class='fa fa-thumbs-o-down post-dislike' href=dislike.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."?hashtag=".$_GET['hashtag']."></a> ".$row[6]."                                <br />
                             </div>";
                             if ('@'.$arr[1] == $row[1]) {
                                 echo "<div class=col-xs-1>

@@ -27,7 +27,7 @@
                                     </fieldset>
                                     <fieldset class="form-group">
                                         <label>Username</label>
-                                        <input class="form-control" type="text" name="username" placeholder="ex. John Smith"/>
+                                        <input class="form-control" type="text" name="username" id="username" placeholder="ex. John Smith"/>
                                     </fieldset>
                                     <fieldset class="form-group">
                                         <label>Password</label>

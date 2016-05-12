@@ -14,7 +14,6 @@
 			$date = date('Y-m-d');
 			$time = date('i');
 
-
 			require("common.php");
 			if(empty($_SESSION['user'])) {
 				$location = "http://" . $_SERVER['HTTP_HOST'] . "/login.php";
@@ -70,7 +69,7 @@
 					<a class="nav-link" href="trending.php">Trending</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="userpage.php">My Page</a>
+					<a class="nav-link" href="<?php echo 'userpage.php?user='.$arr[1]; ?>">My Page</a>
 				</li>
 			</ul>
             <a class="btn btn-primary-outline pull-xs-right" href="logout.php">Log Out</a>
@@ -93,17 +92,18 @@
 							echo "<div class=card card-block><div class=container-fluid>
 							<div class=col-xs-11>
 								<br />
-								<h4 class=card-title><a class=author-link href=user.php?user=".substr($row[1], 1).">".$row[1]."</a>
+								<h4 class=card-title><a class=author-link href=userpage.php?user=".substr($row[1], 1).">".$row[1]."</a>
 								<span class='small'>";
 								foreach ($hashtags as $line) {
 									echo "<a class=hashtag-link href=hashtag.php?hashtag=".substr($line, 1).">".$line." </a>";
 								}
 								echo "</span><span class='small'>";
 								foreach ($usertags as $line) {
-									echo "<a class=usertag-link href=user.php?user=".substr($line, 1).">".$line." </a>";
+									echo "<a class=usertag-link href=userpage.php?user=".substr($line, 1).">".$line." </a>";
 								}
 								if ($row[7] == $date) {
 									$time = $row[8] - $time;
+									$time = $time * -1;
 									if ($time < 60) {
 										echo "</span><span class='card-text small pull-xs-right'><p>".$time." minutes ago </p> </span></h4>";
 									}	else {
@@ -114,8 +114,8 @@
 									echo "</span><span class='card-text small pull-xs-right'>".$row[7]."</span> </h4>";
 								}$time = date('i');
 								echo "<p class=card-text>".$row[2]."</p>
-								<a class='fa fa-thumbs-o-up post-like'></a> ".$row[5]."
-								<a class='fa fa-thumbs-o-down post-dislike'></a> ".$row[6]."
+								<a class='fa fa-thumbs-o-up post-like' href=like.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."></a> ".$row[5]."
+								<a class='fa fa-thumbs-o-down post-dislike' href=like.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."></a> ".$row[6]."
 								<br />
 							</div>";
 							if ('@'.$arr[1] == $row[1]) {

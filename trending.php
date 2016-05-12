@@ -19,7 +19,8 @@
 				echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=home.php">';
 				die("Redirecting to login.php");
 			}
-			$arr = array_values($_SESSION['user']);
+
+            $arr = array_values($_SESSION['user']);
 			$connection = mysql_connect($host, $username, $password) or die ("Unable to connect!");
 			mysql_select_db($dbname) or die ("Unable to select database!");
 			$query = "SELECT * FROM symbols ORDER BY likes DESC";
@@ -50,7 +51,7 @@
 					<a class="nav-link active" href="trending.php">Trending</a>
 				</li>
                 <li class="nav-item">
-					<a class="nav-link" href="userpage.php">My Page</a>
+					<a class="nav-link" href="<?php echo 'userpage.php?user='.$arr[1]; ?>">My Page</a>
 				</li>
 			</ul>
             <a class="btn btn-primary-outline pull-xs-right" href="logout.php">Log Out</a>
@@ -73,14 +74,14 @@
     						echo "<div class=card card-block><div class=container-fluid>
     						<div class=col-xs-11>
     							<br />
-    							<h4 class=card-title><a class=author-link href=user.php?user=".substr($row[1], 1).">".$row[1]."</a>
+    							<h4 class=card-title><a class=author-link href=userpage.php?user=".substr($row[1], 1).">".$row[1]."</a>
     							<span class='small'>";
     							foreach ($hashtags as $line) {
     								echo "<a class=hashtag-link href=hashtag.php?hashtag=".substr($line, 1).">".$line." </a>";
     							}
     							echo "</span><span class='small'>";
     							foreach ($usertags as $line) {
-    								echo "<a class=usertag-link href=user.php?user=".substr($line, 1).">".$line." </a>";
+    								echo "<a class=usertag-link href=userpage.php?user=".substr($line, 1).">".$line." </a>";
     							}
     							echo "</span><span class='card-text small pull-xs-right'>".$row[7]."</span></h4>
     							<p class=card-text>".$row[2]."</p>

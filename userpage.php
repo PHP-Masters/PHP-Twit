@@ -13,6 +13,9 @@
 			date_default_timezone_set('America/Toronto');
 			$date = date('Y-m-d H:i:s');
 
+            $arr = array_values($_SESSION['user']);
+            $users_page = $_GET['user'];
+
 			require("common.php");
 			if(empty($_SESSION['user'])) {
 				$location = "http://" . $_SERVER['HTTP_HOST'] . "/login.php";
@@ -22,12 +25,12 @@
 			$arr = array_values($_SESSION['user']);
 			$connection = mysql_connect($host, $username, $password) or die ("Unable to connect!");
 			mysql_select_db($dbname) or die ("Unable to select database!");
-			$query = "SELECT * FROM symbols WHERE author = '@".$arr[1]."' ORDER BY id DESC";
+			$query = "SELECT * FROM symbols WHERE author = '@".$users_page."' ORDER BY id DESC";
 			$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
 
             $new_bio = mysql_escape_string($_POST['bio']);
 			if ($new_bio != "") {
-				$command = "UPDATE users SET bio = '".$new_bio."' WHERE username = '".$arr[1]."'";
+				$command = "UPDATE users SET bio = '".$new_bio."' WHERE username = '".$users_page."'";
 	     		$result_command = mysql_query($command) or die ("Error in query: $command. ".mysql_error());
 		 		echo "<meta http-equiv='refresh' content='0'>";
 			}
@@ -55,7 +58,7 @@
 					<a class="nav-link" href="trending.php">Trending</a>
 				</li>
                 <li class="nav-item">
-					<a class="nav-link active" href="userpage.php">My Page</a>
+					<a class="nav-link active" href="<?php echo 'userpage.php?user='.$arr[1]; ?>">My Page</a>
 				</li>
 			</ul>
             <a class="btn btn-primary-outline pull-xs-right" href="logout.php">Log Out</a>
@@ -64,10 +67,10 @@
         <div class="container-fluid">
             <div class="jumbotron" style="padding-top: 20px; padding-bottom: 20px;">
                 <?php
-                    $query_bio = "SELECT * FROM users WHERE username = '".$arr[1]."'";
+                    $query_bio = "SELECT * FROM users WHERE username = '".$users_page."'";
     			    $result_bio = mysql_query($query_bio) or die ("Error in query: $query_bio. ".mysql_error());
                     $row_bio = mysql_fetch_row($result_bio);
-                    echo '<h4 class="display-4"> @'.$row_bio[1].'</h4>';
+                    echo '<h4 class="display-4"> @'.$users_page.'</h4>';
                     if ($row_bio[5] != "") {
                         echo '<p class="lead">'.$row_bio[5].'</p>';
                     } else {
@@ -112,24 +115,24 @@
     						echo "<div class=card card-block><div class=container-fluid>
     					    <div class=col-xs-11>
     							<br />
-    							<h4 class=card-title><a class=author-link href=user.php?user=".substr($row[1], 1).">".$row[1]."</a>
+    							<h4 class=card-title><a class=author-link href=userpage.php?user=".substr($row[1], 1).">".$row[1]."</a>
     							<span class='small'>";
     							foreach ($hashtags as $line) {
     								echo "<a class=hashtag-link href=hashtag.php?hashtag=".substr($line, 1).">".$line." </a>";
     							}
     							echo "</span><span class='small'>";
     							foreach ($usertags as $line) {
-    								echo "<a class=usertag-link href=user.php?user=".substr($line, 1).">".$line." </a>";
+    								echo "<a class=usertag-link href=userpage.php?user=".substr($line, 1).">".$line." </a>";
     							}
     							echo "</span><span class='card-text small pull-xs-right'>".$row[7]."</span></h4>
     							<p class=card-text>".$row[2]."</p>
-    							<a class='fa fa-thumbs-o-up post-like' href=like.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."></a> ".$row[5]."
-    							<a class='fa fa-thumbs-o-down post-dislike' href=dislike.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."></a> ".$row[6]."
+    							<a class='fa fa-thumbs-o-up post-like' href=like.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."?user=".$users_page."></a> ".$row[5]."
+    							<a class='fa fa-thumbs-o-down post-dislike' href=dislike.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."?user=".$users_page."></a> ".$row[6]."
     						    </div>";
     						if ('@'.$arr[1] == $row[1]) {
     							echo "<div class=col-xs-1>
     								<a class='btn btn-sm btn-danger pull-xs-right' href=".$_SERVER['PHP_SELF']."?id=".$row[0]." style='margin-top: 15px'>X</a>
-    							</div>";
+                                </div>";
     						}
     						echo "</div></div>";
     					}
