@@ -2,41 +2,42 @@
     <head>
         <link rel="stylesheet" href="Resources/CSS/bootstrap.css"/>
         <link rel="stylesheet" href="Resources/CSS/style.css"/>
-		<script src="Resources/JS/jquery.js"/></script>
-		<script src="Resources/JS/bootstrap.js"/></script>
+		    <script src="Resources/JS/jquery.js"/></script>
+		    <script src="Resources/JS/bootstrap.js"/></script>
         <script src="Resources/JS/script.js"/></script>
+        <!-- Latest compiled and minified CSS / Bootstrap 3.3.6-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
     </head>
 
     <body>
-        <nav class="navbar navbar-light bg-faded" id="navbar-main">
-			<a class="navbar-brand" href="home.php"> Twitter </a>
-			<a class="btn btn-primary-outline pull-xs-right" id="register-btn" href="register.php">Register</a>
-            <a class="btn btn-primary-outline pull-xs-right" href="login.php">Login</a>
-		</nav>
+        <nav class="navbar navbar-light bg-faded " id="navbar-main">
+      		<a class="navbar-brand" href="home.php"> Tweetter </a>
+      		<a class="btn btn-secondary-outline pull-xs-right btn-lg" id="register-btn" href="register.php" style="width: 100px">Register</a>
+          <a class="btn btn-secondary-outline pull-xs-right btn-lg" href="login.php" style="width: 100px">Login</a>
+          <ul class="nav navbar-nav">
+            <li><a href="devs.php">Developers <span class="sr-only">(current)</span></a></li>
+            <li><a href="progress.php">Progress</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Help</a>
+              <ul class="dropdown-menu">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Copyright</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Contact Us</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">GitHub</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
 
         <div class="center">
-            <h1 class="text-primary"> Welcome to Our Site </h1>
-            <p> This is our beautiful, intuitive and unique twitter website.  We would go as far as saying it's better than twitter itself!
-            </br> Check this cool stuff out!
+            <h1 class="text-primary"> Join us today! </h1>
             </p>
         </div>
 
-        <div class="btn-group btn-block">
-            <button type="button" class="btn btn-block btn-primary dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Creators <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              <p> <center> <b> Julian </b>
-              <br>
-              Julian is sick.<br> Absolute legend. <br> Straight Savage. <br> Obama out.
-              </center>
-            </ul>
-            <ul class="dropdown-menu1" role="menu">
-              <p> <center> <b> Simon </b>
-              <br>
-              Simon is a cow.<br> He looks like a fat elephant. <br> But he's also a straight savage. <br> Mic Drop.
-              </center>
-            </ul>
-          </div>
+
 
     </body>
 </html>
