@@ -32,5 +32,9 @@ form {
 
 .text-primary {
 
-  margin-top: 200px;
+}
+
+.image {
+  object-position: center;
+  object-fit: fill;
 }
