@@ -105,7 +105,7 @@
             </div>
         </div>
 
-        <div class="col-xs-8">
+        <div class="col-xs-12">
     		<div class="container-fluid bg-faded" style="padding-top: 10px">
     			<?php
     				if (mysql_num_rows($result) > 0) {
@@ -145,12 +145,6 @@
     				mysql_free_result($result);
     			?>
     		</div>
-        </div>
-
-        <div class="col-xs-4">
-    		<div class="container-fluid bg-faded" style="padding-top: 10px">
-                Hello
-            </div>
         </div>
     </body>
 </html>

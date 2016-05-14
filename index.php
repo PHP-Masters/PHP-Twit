@@ -102,8 +102,8 @@
 									echo "<a class=usertag-link href=userpage.php?user=".substr($line, 1).">".$line." </a>";
 								}
 								if ($row[7] == $date) {
-									$time = $row[8] - $time;
-									$time = $time * -1;
+									$time = $time - $row[8];
+
 									if ($time < 60) {
 										echo "</span><span class='card-text small pull-xs-right'><p>".$time." minutes ago </p> </span></h4>";
 									}	else {
@@ -112,10 +112,10 @@
 									}
 								} else {
 									echo "</span><span class='card-text small pull-xs-right'>".$row[7]."</span> </h4>";
-								}$time = date('i');
+								} $time = date('i');
 								echo "<p class=card-text>".$row[2]."</p>
 								<a class='fa fa-thumbs-o-up post-like' href=like.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."></a> ".$row[5]."
-								<a class='fa fa-thumbs-o-down post-dislike' href=like.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."></a> ".$row[6]."
+								<a class='fa fa-thumbs-o-down post-dislike' href=dislike.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."></a> ".$row[6]."
 								<br />
 							</div>";
 							if ('@'.$arr[1] == $row[1]) {
