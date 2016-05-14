@@ -5,13 +5,15 @@
 		<script src="Resources/JS/jquery.js"/></script>
 		<script src="Resources/JS/bootstrap.js"/></script>
         <script src="Resources/JS/script.js"/></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
     </head>
 
     <body>
         <nav class="navbar navbar-light bg-faded" id="navbar-main">
 			<a class="navbar-brand" href="home.php">Tweeter</a>
-			<a class="btn btn-primary-outline pull-xs-right" id="register-btn" href="login.php">Login</a>
-            <a class="btn btn-primary-outline pull-xs-right" href="home.php">Home</a>
+			<a class="btn btn-secondary-outline pull-xs-right btn-lg" id="register-btn" href="login.php" style="width: 100px">Login</a>
+      <a class="btn btn-secondary-outline pull-xs-right btn-lg" id="register-btn" href="home.php" style="width: 100px">Home</a>
 		</nav>
 
         <div class="container-fluid">

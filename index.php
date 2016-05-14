@@ -6,14 +6,20 @@
 		<script src="Resources/JS/jquery.js"/></script>
 		<script src="Resources/JS/bootstrap.js"/></script>
 		<script src="Resources/JS/script.js"/></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
 	</head>
 
 	<body>
 		<?php
-			date_default_timezone_set('America/Toronto');
+			date_default_timezone_get('America/Toronto');
 			$date = date('Y-m-d');
+<<<<<<< HEAD
 			$time = date('i');
 
+=======
+			$current_time_now = time();
+>>>>>>> origin/master
 			require("common.php");
 			if(empty($_SESSION['user'])) {
 				$location = "http://" . $_SERVER['HTTP_HOST'] . "/login.php";
@@ -39,7 +45,7 @@
 						$users = $users.$word." ";
 					}
 				}
-				$query = "INSERT INTO symbols (author, post, hashtags, tags, date, time) VALUES ('@$arr[1]', '$post', '$hashtags', '$users', '$date', '$time')";
+				$query = "INSERT INTO symbols (author, post, hashtags, tags, date, time, hours) VALUES ('@$arr[1]', '$post', '$hashtags', '$users', '$date', '$current_time_now', '$hours')";
 	     		$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
 		 		echo "<meta http-equiv='refresh' content='0'>";
 			}
@@ -102,6 +108,7 @@
 									echo "<a class=usertag-link href=userpage.php?user=".substr($line, 1).">".$line." </a>";
 								}
 								if ($row[7] == $date) {
+<<<<<<< HEAD
 									$time = $time - $row[8];
 
 									if ($time < 60) {
@@ -113,6 +120,19 @@
 								} else {
 									echo "</span><span class='card-text small pull-xs-right'>".$row[7]."</span> </h4>";
 								} $time = date('i');
+=======
+									$current_time_now = $current_time_now - $row[8];
+									$current_time_now = $current_time_now / 60;
+									if ($current_time_now < 60) {
+										echo "</span><span class='card-text small pull-xs-right'><p>".floor($current_time_now)." minutes ago </p> </span></h4>";
+									} else {
+										$current_time_now = $current_time_now / 60;
+										echo "</span><span class='card-text small pull-xs-right'><p>".floor($current_time_now)." hours ago </p> </span></h4>";
+									}
+								} else {
+									echo "</span><span class='card-text small pull-xs-right'>".$row[7]."</span> </h4>";
+								} $current_time_now = time();
+>>>>>>> origin/master
 								echo "<p class=card-text>".$row[2]."</p>
 								<a class='fa fa-thumbs-o-up post-like' href=like.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."></a> ".$row[5]."
 								<a class='fa fa-thumbs-o-down post-dislike' href=dislike.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."></a> ".$row[6]."

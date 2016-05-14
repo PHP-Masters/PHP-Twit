@@ -29,3 +29,12 @@ form {
 .drop-menu1 {
   margin-left: 100px;
 }
+
+.text-primary {
+
+}
+
+.image {
+  object-position: center;
+  object-fit: fill;
+}
