@@ -94,7 +94,18 @@
                                     foreach ($usertags as $line) {
                                         echo "<a class=usertag-link href=userpage.php?user=".substr($line, 1).">".$line." </a>";
                                     }
-                                    echo "</span><span class='card-text small pull-xs-right'>".$row[7]."</span></h4>
+                                    if ($row[7] == $date) {
+                    									$current_time_now = $current_time_now - $row[8];
+                    									$current_time_now = $current_time_now / 60;
+                    									if ($current_time_now < 60) {
+                    										echo "</span><span class='card-text small pull-xs-right'><p>".floor($current_time_now)." minutes ago </p> </span></h4>";
+                    									} else {
+                    										$current_time_now = $current_time_now / 60;
+                    										echo "</span><span class='card-text small pull-xs-right'><p>".floor($current_time_now)." hours ago </p> </span></h4>";
+                    									}
+                    								} else {
+                    									echo "</span><span class='card-text small pull-xs-right'>".$row[7]."</span> </h4>;
+                    								}
                                     <p class=card-text>".$row[2]."</p>
                                     <a class='fa fa-thumbs-o-up post-like' href=like.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."></a> ".$row[5]."
     								<a class='fa fa-thumbs-o-down post-dislike' href=dislike.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."></a> ".$row[6]."
