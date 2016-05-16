@@ -1,7 +1,9 @@
 <html>
     <head>
+        <!-- this imports all of our CSS -->
         <link rel="stylesheet" href="Resources/CSS/bootstrap.css"/>
         <link rel="stylesheet" href="Resources/CSS/style.css"/>
+        <!-- this imports all of our CSS -->
 		<script src="Resources/JS/jquery.js"/></script>
 		<script src="Resources/JS/bootstrap.js"/></script>
         <script src="Resources/JS/script.js"/></script>
