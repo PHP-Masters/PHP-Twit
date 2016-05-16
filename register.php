@@ -9,9 +9,21 @@
 
     <body>
         <nav class="navbar navbar-light bg-faded" id="navbar-main">
-			<a class="navbar-brand" href="home.php">Tweeter</a>
-			<a class="btn btn-primary-outline pull-xs-right" id="register-btn" href="login.php">Login</a>
-            <a class="btn btn-primary-outline pull-xs-right" id="register-btn" href="home.php">Home</a>
+			<a class="navbar-brand" href="home.php">Tweetter</a>
+            <ul class="nav navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="about.php">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="help.php">Help</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="developers.php">Developers</a>
+                </li>
+            </ul>
+            <a class="btn btn-primary-outline pull-xs-right" id="register-btn" href="login.php">Login</a>
 		</nav>
 
         <div class="container-fluid">

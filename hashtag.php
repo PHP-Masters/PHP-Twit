@@ -28,7 +28,7 @@
         ?>
 
         <nav class="navbar navbar-light bg-faded" id="navbar-main">
-			<a class="navbar-brand" href="">Tweeter</a>
+			<a class="navbar-brand" href="">Tweetter</a>
 			<ul class="nav navbar-nav">
 				<li class="nav-item">
 					<a class="nav-link" href="index.php">All</a>

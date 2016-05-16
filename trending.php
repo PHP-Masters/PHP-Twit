@@ -40,7 +40,7 @@
 		?>
 
         <nav class="navbar navbar-light bg-faded" id="navbar-main">
-			<a class="navbar-brand" href="">Tweeter</a>
+			<a class="navbar-brand" href="">Tweetter</a>
 			<ul class="nav navbar-nav">
 				<li class="nav-item">
 					<a class="nav-link" href="index.php">All</a>
@@ -84,7 +84,7 @@
     							foreach ($usertags as $line) {
     								echo "<a class=usertag-link href=userpage.php?user=".substr($line, 1).">".$line." </a>";
     							}
-                                
+
                                 if ($row[7] == $date) {
 									$current_time_now = $current_time_now - $row[8];
 									$current_time_now = $current_time_now / 60;
