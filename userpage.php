@@ -76,9 +76,12 @@
                     } else {
                         echo '<p class="lead">Add a bio so people can learn a bit about you.</p>';
                     }
-                    echo '<button class="btn btn-info-outline" data-toggle="modal" data-target="#changebio">
-                        Edit Your Bio
-                    </button>';
+
+                    if ($arr[1] == $user) {
+                        echo '<button class="btn btn-info-outline" data-toggle="modal" data-target="#changebio">
+                            Edit Your Bio
+                        </button>';
+                    }
                 ?>
             </div>
         </div>
@@ -93,7 +96,7 @@
                         <h4 class="modal-title" id="myModalLabel">Change Your Bio</h4>
                     </div>
                     <div class="modal-body">
-                        <form action="userpage.php" method="post">
+                        <form action="<?php echo 'userpage.php?user='.$user ?>" method="post">
     	                    <input class="form-control" type="text" name="bio" value="<?php echo $row_bio[5] ?>" style="margin-bottom: 10px"/>
                             <div class="text-xs-right">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -145,7 +148,7 @@
     						    </div>";
     						if ('@'.$arr[1] == $row[1]) {
     							echo "<div class=col-xs-1>
-    								<a class='btn btn-sm btn-danger pull-xs-right' href=".$_SERVER['PHP_SELF']."?id=".$row[0]." style='margin-top: 15px'>X</a>
+    								<a class='btn btn-sm btn-danger pull-xs-right' href=".$_SERVER['PHP_SELF']."?user=".$user."&id=".$row[0]." style='margin-top: 15px'>X</a>
                                 </div>";
     						}
     						echo "</div></div>";
