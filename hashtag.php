@@ -29,7 +29,9 @@
 		</nav>
 
         <?php
+            // set the time zone to EST
             date_default_timezone_set('America/Toronto');
+            // return the date 
             $date = date('Y-m-d H:i:s');
 
             require("common.php");
