@@ -10,11 +10,12 @@
 
     <body>
         <?php
-			date_default_timezone_set('America/Toronto');
-			$date = date('Y-m-d H:i:s');
+            date_default_timezone_get('America/Toronto');
+            $date = date('Y-m-d');
+            $current_time_now = time();
 
             $arr = array_values($_SESSION['user']);
-            $users_page = $_GET['user'];
+            $user = $_GET['user'];
 
 			require("common.php");
 			if(empty($_SESSION['user'])) {
@@ -25,22 +26,21 @@
 			$arr = array_values($_SESSION['user']);
 			$connection = mysql_connect($host, $username, $password) or die ("Unable to connect!");
 			mysql_select_db($dbname) or die ("Unable to select database!");
-			$query = "SELECT * FROM symbols WHERE author = '@".$users_page."' ORDER BY id DESC";
+			$query = "SELECT * FROM symbols WHERE author = '@".$user."' ORDER BY id DESC";
 			$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
 
             $new_bio = mysql_escape_string($_POST['bio']);
 			if ($new_bio != "") {
-				$command = "UPDATE users SET bio = '".$new_bio."' WHERE username = '".$users_page."'";
+				$command = "UPDATE users SET bio = '".$new_bio."' WHERE username = '".$user."'";
 	     		$result_command = mysql_query($command) or die ("Error in query: $command. ".mysql_error());
-		 		echo "<meta http-equiv='refresh' content='0'>";
-			}
+                echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=userpage.php?user='.$user.'">';
+            }
 
 			if (isset($_GET['id'])) {
 				echo $_SERVER['PHP_SELF'];
 	    		$query = "DELETE FROM symbols WHERE id = ".$_GET['id'];
 	     		$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
-				$location = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
-				echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL='.$location.'">';
+				echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=userpage.php?user='.$user.'">';
 				exit;
 			}
 		?>
@@ -67,10 +67,10 @@
         <div class="container-fluid">
             <div class="jumbotron" style="padding-top: 20px; padding-bottom: 20px;">
                 <?php
-                    $query_bio = "SELECT * FROM users WHERE username = '".$users_page."'";
+                    $query_bio = "SELECT * FROM users WHERE username = '".$user."'";
     			    $result_bio = mysql_query($query_bio) or die ("Error in query: $query_bio. ".mysql_error());
                     $row_bio = mysql_fetch_row($result_bio);
-                    echo '<h4 class="display-4"> @'.$users_page.'</h4>';
+                    echo '<h4 class="display-4"> @'.$user.'</h4>';
                     if ($row_bio[5] != "") {
                         echo '<p class="lead">'.$row_bio[5].'</p>';
                     } else {
@@ -124,10 +124,24 @@
     							foreach ($usertags as $line) {
     								echo "<a class=usertag-link href=userpage.php?user=".substr($line, 1).">".$line." </a>";
     							}
-    							echo "</span><span class='card-text small pull-xs-right'>".$row[7]."</span></h4>
-    							<p class=card-text>".$row[2]."</p>
-    							<a class='fa fa-thumbs-o-up post-like' href=like.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."?user=".$users_page."></a> ".$row[5]."
-    							<a class='fa fa-thumbs-o-down post-dislike' href=dislike.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."?user=".$users_page."></a> ".$row[6]."
+
+                                if ($row[7] == $date) {
+									$current_time_now = $current_time_now - $row[8];
+									$current_time_now = $current_time_now / 60;
+									if ($current_time_now < 60) {
+										echo "</span><span class='card-text small pull-xs-right'><p>".floor($current_time_now)." minutes ago </p> </span></h4>";
+									} else {
+										$current_time_now = $current_time_now / 60;
+										echo "</span><span class='card-text small pull-xs-right'><p>".floor($current_time_now)." hours ago </p> </span></h4>";
+									}
+								} else {
+									echo "</span><span class='card-text small pull-xs-right'>".$row[7]."</span> </h4>";
+								}
+								$current_time_now = time();
+
+                                echo "<p class=card-text>".$row[2]."</p>
+    							<a class='fa fa-thumbs-o-up post-like' href=like.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."?user=".$user."></a> ".$row[5]."
+    							<a class='fa fa-thumbs-o-down post-dislike' href=dislike.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."?user=".$user."></a> ".$row[6]."
     						    </div>";
     						if ('@'.$arr[1] == $row[1]) {
     							echo "<div class=col-xs-1>

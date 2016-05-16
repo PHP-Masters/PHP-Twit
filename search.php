@@ -9,6 +9,24 @@
     </head>
 
     <body>
+        <?php
+            date_default_timezone_get('America/Toronto');
+            $date = date('Y-m-d');
+            $current_time_now = time();
+
+            require("common.php");
+            if(empty($_SESSION['user'])) {
+                $location = "http://" . $_SERVER['HTTP_HOST'] . "/login.php";
+                echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=home.php">';
+                die("Redirecting to login.php");
+            }
+            $arr = array_values($_SESSION['user']);
+            $connection = mysql_connect($host, $username, $password) or die ("Unable to connect!");
+            mysql_select_db($dbname) or die ("Unable to select database!");
+            $query = "SELECT * FROM symbols ORDER BY id DESC";
+            $result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
+        ?>
+
         <nav class="navbar navbar-light bg-faded" id="navbar-main">
 			<a class="navbar-brand" href="">Tweeter</a>
 			<ul class="nav navbar-nav">
@@ -27,23 +45,6 @@
 			</ul>
             <a class="btn btn-primary-outline pull-xs-right" href="logout.php">Log Out</a>
 		</nav>
-
-        <?php
-            date_default_timezone_set('America/Toronto');
-            $date = date('Y-m-d H:i:s');
-
-            require("common.php");
-            if(empty($_SESSION['user'])) {
-                $location = "http://" . $_SERVER['HTTP_HOST'] . "/login.php";
-                echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=home.php">';
-                die("Redirecting to login.php");
-            }
-            $arr = array_values($_SESSION['user']);
-            $connection = mysql_connect($host, $username, $password) or die ("Unable to connect!");
-            mysql_select_db($dbname) or die ("Unable to select database!");
-            $query = "SELECT * FROM symbols ORDER BY id DESC";
-            $result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
-        ?>
 
         <div class="col-xs-4">
             <div class="container-fluid bg-faded" style="padding-top: 10px">
@@ -94,8 +95,22 @@
                                     foreach ($usertags as $line) {
                                         echo "<a class=usertag-link href=userpage.php?user=".substr($line, 1).">".$line." </a>";
                                     }
-                                    echo "</span><span class='card-text small pull-xs-right'>".$row[7]."</span></h4>
-                                    <p class=card-text>".$row[2]."</p>
+                                    
+                                    if ($row[7] == $date) {
+    									$current_time_now = $current_time_now - $row[8];
+    									$current_time_now = $current_time_now / 60;
+    									if ($current_time_now < 60) {
+    										echo "</span><span class='card-text small pull-xs-right'><p>".floor($current_time_now)." minutes ago </p> </span></h4>";
+    									} else {
+    										$current_time_now = $current_time_now / 60;
+    										echo "</span><span class='card-text small pull-xs-right'><p>".floor($current_time_now)." hours ago </p> </span></h4>";
+    									}
+    								} else {
+    									echo "</span><span class='card-text small pull-xs-right'>".$row[7]."</span> </h4>";
+    								}
+    								$current_time_now = time();
+
+                                    echo "<p class=card-text>".$row[2]."</p>
                                     <a class='fa fa-thumbs-o-up post-like' href=like.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."></a> ".$row[5]."
     								<a class='fa fa-thumbs-o-down post-dislike' href=dislike.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."></a> ".$row[6]."
                                 </div>";

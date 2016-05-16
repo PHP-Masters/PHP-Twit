@@ -10,8 +10,8 @@
     <body>
         <nav class="navbar navbar-light bg-faded" id="navbar-main">
 			<a class="navbar-brand" href="home.php">Tweeter</a>
-			<a class="btn btn-secondary-outline pull-xs-right btn-lg" id="register-btn" href="register.php" style="width: 100px">Register</a>
-      <a class="btn btn-secondary-outline pull-xs-right btn-lg" id="register-btn" href="home.php" style="width: 100px">Home</a>
+			<a class="btn btn-primary-outline pull-xs-right" id="register-btn" href="register.php">Register</a>
+            <a class="btn btn-primary-outline pull-xs-right" id="register-btn" href="home.php">Home</a>
 		</nav>
 
         <div class="container-fluid">

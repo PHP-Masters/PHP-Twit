@@ -10,8 +10,9 @@
 
     <body>
         <?php
-			date_default_timezone_set('America/Toronto');
-			$date = date('Y-m-d H:i:s');
+            date_default_timezone_get('America/Toronto');
+            $date = date('Y-m-d');
+            $current_time_now = time();
 
 			require("common.php");
 			if(empty($_SESSION['user'])) {
@@ -83,11 +84,25 @@
     							foreach ($usertags as $line) {
     								echo "<a class=usertag-link href=userpage.php?user=".substr($line, 1).">".$line." </a>";
     							}
-    							echo "</span><span class='card-text small pull-xs-right'>".$row[7]."</span></h4>
-    							<p class=card-text>".$row[2]."</p>
+                                
+                                if ($row[7] == $date) {
+									$current_time_now = $current_time_now - $row[8];
+									$current_time_now = $current_time_now / 60;
+									if ($current_time_now < 60) {
+										echo "</span><span class='card-text small pull-xs-right'><p>".floor($current_time_now)." minutes ago </p> </span></h4>";
+									} else {
+										$current_time_now = $current_time_now / 60;
+										echo "</span><span class='card-text small pull-xs-right'><p>".floor($current_time_now)." hours ago </p> </span></h4>";
+									}
+								} else {
+									echo "</span><span class='card-text small pull-xs-right'>".$row[7]."</span> </h4>";
+								}
+								$current_time_now = time();
+
+                                echo "<p class=card-text>".$row[2]."</p>
     							<a class='fa fa-thumbs-o-up post-like' href=like.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."></a> ".$row[5]."
     							<a class='fa fa-thumbs-o-down post-dislike' href=dislike.php?id=".$row[0]."&site=".$_SERVER['PHP_SELF']."></a> ".$row[6]."
-    						</div>";
+    						    </div>";
     						if ('@'.$arr[1] == $row[1]) {
     							echo "<div class=col-xs-1>
     								<a class='btn btn-sm btn-danger pull-xs-right' href=".$_SERVER['PHP_SELF']."?id=".$row[0]." style='margin-top: 15px'>X</a>
