@@ -29,9 +29,16 @@
 		</nav>
 
         <?php
+<<<<<<< HEAD
             date_default_timezone_get('America/Toronto');
             $date = date('Y-m-d');
             $current_time_now = time();
+=======
+            // set the time zone to EST
+            date_default_timezone_set('America/Toronto');
+            // return the date 
+            $date = date('Y-m-d H:i:s');
+>>>>>>> origin/master
 
             require("common.php");
             if(empty($_SESSION['user'])) {
