@@ -20,7 +20,7 @@
         <script src="Resources/JS/script.js"/></script>
     </head>
 
-    <body background="Resources/Images/background_3.jpg" bgproperties="fixed">
+    <body background="Resources/Images/background.jpg" bgproperties="fixed">
         <nav class="navbar navbar-light bg-faded" id="navbar-main">
 			<a class="navbar-brand" href="home.php">Tweetter</a>
             <ul class="nav navbar-nav">
