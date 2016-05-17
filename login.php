@@ -15,7 +15,7 @@
 		<script src="Resources/JS/bootstrap.js"/></script>
         <script src="Resources/JS/script.js"/></script>
     </head>
-
+    <body background="Resources/Images/background_6.jpg" bgproperties="fixed">
     <body>
         <nav class="navbar navbar-light bg-faded" id="navbar-main">
 			<a class="navbar-brand" href="home.php">Tweetter</a>
@@ -56,7 +56,6 @@
                                 <input class="form-control" type="text" name="username" placeholder="ex. John Smith"/>
                                 </fieldset>';
                             }
-
                             // if the login attempt has failed
                             if (isset($_GET['failed'])) {
                                 // add the danger class to the form - makes it look nice
@@ -89,16 +88,13 @@
             require("common.php");
             // set a string variable for the submitted username
             $submitted_username = '';
-
             // if they have entered anything at all
             if(!empty($_POST)) {
                 // set a boolean for the login to see if it failed
                 $login_ok = false;
-
                 // create an SQL query that searches for any rows from the users table that hav that username
                 $query = " SELECT id, username, password, salt, email FROM users WHERE username = :username";
                 $query_params = array (':username' => $_POST['username']);
-
                 // try to run the sql code
                 try {
                     $stmt = $db->prepare($query);
@@ -106,7 +102,6 @@
                 } catch(PDOException $ex) {
                     die("Failed to run query: " . $ex->getMessage());
                 }
-
                 // hash the password using the salt
                 $row = $stmt->fetch();
                 if($row) {
@@ -120,7 +115,6 @@
                         $login_ok = true;
                     }
                 }
-
                 // if the login workd
                 if($login_ok) {
                     // unset the salt and password

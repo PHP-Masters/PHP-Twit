@@ -19,7 +19,7 @@
 		<script src="Resources/JS/bootstrap.js"/></script>
 		<script src="Resources/JS/script.js"/></script>
 	</head>
-
+	<body background="Resources/Images/background_6.jpg" bgproperties="fixed">
 	<body>
 		<?php
 			// pass in some data such as the database
@@ -30,25 +30,20 @@
 				echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=home.php">';
 				die();
 			}
-
             // set the time zone, then return the current time and date
             date_default_timezone_get('America/Toronto');
             $date = date('Y-m-d');
             $current_time_now = time();
-
             // return an array that has the user's info - username, email, ...
             $arr = array_values($_SESSION['user']);
-
             // open the connection or quit the program
             $connection = mysql_connect($host, $username, $password) or die ("Unable to connect!");
             // connect to the database or quit the program
             mysql_select_db($dbname) or die ("Unable to select database!");
-
             // write a query to return all the rows from the table "symbols" in descending order by ID - ascending order by time
             $query = "SELECT * FROM symbols ORDER BY id DESC";
             // run  the SQL code above
             $result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
-
 			// returnt he value for the post the suer made using PHP's $_POST funcitonality
 			$post = mysql_escape_string($_POST['post']);
 			// split the post apart into a list of words - breaking elements at each space
@@ -56,7 +51,6 @@
 			// create a string for each of the hastags and for each of the user tags
 			$hashtags = "";
 			$users = "";
-
 			// as long as the post is not blank
 			if ($post != "") {
 				// loop through each element in the list
@@ -76,7 +70,6 @@
 				// refresh the page to see the new post
 				echo "<meta http-equiv='refresh' content='0'>";
 			}
-
 			// this check if they clicked the delete button beside a post
 			if (isset($_GET['id'])) {
 				echo $_SERVER['PHP_SELF'];
@@ -141,7 +134,6 @@
                             foreach ($usertags as $line) {
                                 echo "<a class=usertag-link href=userpage.php?user=".substr($line, 1).">".$line." </a>";
                             }
-
                             // echo the date/time
                             // if it was posted today
                             if ($row[7] == $date) {
@@ -162,7 +154,6 @@
 							}
                             // reset the current time
 							$current_time_now = time();
-
                             // add the like/dislike icons and tallies
                             // use font-awesome icons to do so
                             echo "<p class=card-text>".$row[2]."</p>
@@ -183,7 +174,6 @@
 						<h3 class='text-xs-center'>Be the first to write a post.</h3>
 						</div></div>";
 					}
-
 					// free the result to reset it for the next time you run the query
 					mysql_free_result($result);
 				?>
