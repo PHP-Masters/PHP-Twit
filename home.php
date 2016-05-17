@@ -52,7 +52,7 @@
                         <hr class="m-y-2">
                         <p>Did you mean to open Twitter but made a typo and found Tweetter. Well, that's a stroke of luck.
                         Tweetter just so happens to be the next big social media, and you found it in it's early days. To
-                        more about this awesome site, click on this box.</p>
+                        learn more about this awesome site, click on this box.</p>
                     </div>
                 </div>
             </a>
