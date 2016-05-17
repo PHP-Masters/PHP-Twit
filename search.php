@@ -1,3 +1,13 @@
+<?php
+    /*
+    authors: julian.samek, isaac.ng, alex.kazakov, simon.osak
+    date: 2016-05-16
+    version: 1.0.0
+    search.php: allows you to search for posts by hashtags or users
+    You type in the keyword to search by and then search
+    */
+?>
+
 <html>
     <head>
         <!-- this imports all of our CSS -->

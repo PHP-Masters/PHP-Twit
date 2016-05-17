@@ -1,4 +1,13 @@
 <?php
+    /*
+    authors: julian.samek, isaac.ng, alex.kazakov, simon.osak
+    date: 2016-05-16
+    version: 1.0.0
+    like.php: allows you to like a post - gives one more like to a post when the thumb's up icon is clicked
+    */
+?>
+
+<?php
     // pass in some data such as the database
     require("common.php");
     // open the connection - if can't, quit the program - like a try/catch statement

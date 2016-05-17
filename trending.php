@@ -1,3 +1,12 @@
+<?php
+    /*
+    authors: julian.samek, isaac.ng, alex.kazakov, simon.osak
+    date: 2016-05-16
+    version: 1.0.0
+    trending.php: returns a list of the most popular posts - posts with the most likes
+    */
+?>
+
 <html>
     <head>
         <!-- this imports all of our CSS -->

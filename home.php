@@ -1,3 +1,13 @@
+<?php
+    /*
+    authors: julian.samek, isaac.ng, alex.kazakov, simon.osak
+    date: 2016-05-16
+    version: 1.0.0
+    home.php: the home page for the site if you are not logged in
+    Provides links and brief explanations to the developers, about, and help pages.
+    */
+?>
+
 <html>
     <head>
         <!-- this imports all of our CSS -->

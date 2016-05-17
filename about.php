@@ -1,3 +1,14 @@
+<?php
+    /*
+    authors: julian.samek, isaac.ng, alex.kazakov, simon.osak
+    date: 2016-05-16
+    version: 1.0.0
+    about.php: desrcibes basic information about tweetter
+    This page only uses html and gives any possible new users
+    a sense of the site before they sign up
+    */
+?>
+
 <html>
     <head>
         <!-- this imports all of our CSS -->

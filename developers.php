@@ -1,3 +1,15 @@
+<?php
+    /*
+    authors: julian.samek, isaac.ng, alex.kazakov, simon.osak
+    date: 2016-05-16
+    version: 1.0.0
+    devlopers.php: a brief page outlining the four developers and what they did
+    This page does not really benefit new users, but it helps learning environments
+    understand how roles are played in website development, as well as giving the
+    creators some fame.
+    */
+?>
+
 <html>
     <head>
         <!-- this imports all of our CSS -->

@@ -1,3 +1,12 @@
+<?php
+    /*
+    authors: julian.samek, isaac.ng, alex.kazakov, simon.osak
+    date: 2016-05-16
+    version: 1.0.0
+    hashtag.php: will display a specific page with only post under a certain hashtag
+    */
+?>
+
 <html>
     <head>
         <!-- this imports all of our CSS -->

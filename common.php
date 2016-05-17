@@ -1,4 +1,15 @@
 <?php
+    /*
+    authors: julian.samek, isaac.ng, alex.kazakov, simon.osak
+    date: 2016-05-16
+    version: 1.0.0
+    common.php: passes in basic data such as the database, the root, and local host
+    This php file gets called in most pages (ex. index.php), and is an example of modularization
+    in PHP.
+    */
+?>
+
+<?php
 
     // These variables define the connection information for your MySQL database
     $username = "root";

@@ -1,3 +1,13 @@
+<?php
+    /*
+    authors: julian.samek, isaac.ng, alex.kazakov, simon.osak
+    date: 2016-05-16
+    version: 1.0.0
+    index.php: the home page for the site once you are logged in
+	This page is where you can write new posts and view all posts in order of date
+    */
+?>
+
 <html>
 	<head>
 		<!-- this imports all of our CSS -->

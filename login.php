@@ -1,3 +1,12 @@
+<?php
+    /*
+    authors: julian.samek, isaac.ng, alex.kazakov, simon.osak
+    date: 2016-05-16
+    version: 1.0.0
+    login.php: a secure method for users to login to the website
+    */
+?>
+
 <html>
     <head>
         <link rel="stylesheet" href="Resources/CSS/bootstrap.css"/>

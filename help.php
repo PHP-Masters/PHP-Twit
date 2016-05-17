@@ -1,3 +1,13 @@
+<?php
+    /*
+    authors: julian.samek, isaac.ng, alex.kazakov, simon.osak
+    date: 2016-05-16
+    version: 1.0.0
+    help.php: gives additional support to new users trying to use the website for their first time
+    The page provides help for 8 different scenarios
+    */
+?>
+
 <html>
     <head>
         <!-- this imports all of our CSS -->

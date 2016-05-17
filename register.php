@@ -1,3 +1,13 @@
+<?php
+    /*
+    authors: julian.samek, isaac.ng, alex.kazakov, simon.osak
+    date: 2016-05-16
+    version: 1.0.0
+    register.php: allows you to register - takes an email, username, and password
+    Provides useful advice in cases of failed registration and a secure system using salts
+    */
+?>
+
 <html>
     <head>
         <!-- this imports all of our CSS -->

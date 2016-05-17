@@ -1,3 +1,12 @@
+<?php
+    /*
+    authors: julian.samek, isaac.ng, alex.kazakov, simon.osak
+    date: 2016-05-16
+    version: 1.0.0
+    userpage.php: gives each user their own page that lists all fo their posts and has their bio
+    */
+?>
+
 <html>
     <head>
         <!-- this imports all of our CSS -->
