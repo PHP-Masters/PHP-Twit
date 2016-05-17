@@ -18,8 +18,8 @@
         <script src="Resources/JS/bootstrap.js"/></script>
         <script src="Resources/JS/script.js"/></script>
     </head>
+
     <body background="Resources/Images/background_6.jpg" bgproperties="fixed">
-    <body>
         <?php
             // pass in some data such as the database
             require("common.php");

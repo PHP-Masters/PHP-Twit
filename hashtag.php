@@ -19,7 +19,7 @@
         <script src="Resources/JS/script.js"/></script>
     </head>
 
-    <body>
+    <body background="Resources/Images/background_3.jpg" bgproperties="fixed">
         <?php
             // pass in some data such as the database
             require("common.php");

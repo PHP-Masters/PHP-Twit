@@ -18,8 +18,8 @@
 		<script src="Resources/JS/bootstrap.js"/></script>
         <script src="Resources/JS/script.js"/></script>
     </head>
+    
     <body background="Resources/Images/background_6.jpg" bgproperties="fixed">
-    <body>
         <nav class="navbar navbar-light bg-faded" id="navbar-main">
 			<a class="navbar-brand" href="home.php">Tweetter</a>
             <ul class="nav navbar-nav">
